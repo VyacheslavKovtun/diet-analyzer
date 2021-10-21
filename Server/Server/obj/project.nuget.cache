@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eG/lCGLCS5LAG/wkb+NPFmHDPQydWrKutU5YqT4QCrSVXtX9g1i10qaJQmaaKSMnZXAtJszmqPDhsrV8O42WKg==",
+  "dgSpecHash": "GUYeDF1ZjGAzitM67y0RcqETyD91+yLSlx2/a7Z6YWpQqIh+AZdxkeUblp/2EnrKPSjbft2bNcPtO2YkPu6qXA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Vyacheslav\\Desktop\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server\\Server.csproj",
+  "projectFilePath": "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server\\Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vyacheslav\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.20\\microsoft.aspnetcore.cryptography.internal.3.1.20.nupkg.sha512",
     "C:\\Users\\Vyacheslav\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.20\\microsoft.aspnetcore.cryptography.keyderivation.3.1.20.nupkg.sha512",

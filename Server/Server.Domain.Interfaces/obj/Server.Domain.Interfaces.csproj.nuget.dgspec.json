@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vyacheslav\\Desktop\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\Server.Domain.Interfaces.csproj": {}
+    "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\Server.Domain.Interfaces.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vyacheslav\\Desktop\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\Server.Domain.Interfaces.csproj": {
+    "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\Server.Domain.Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vyacheslav\\Desktop\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\Server.Domain.Interfaces.csproj",
+        "projectUniqueName": "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\Server.Domain.Interfaces.csproj",
         "projectName": "Server.Domain.Interfaces",
-        "projectPath": "C:\\Users\\Vyacheslav\\Desktop\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\Server.Domain.Interfaces.csproj",
+        "projectPath": "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\Server.Domain.Interfaces.csproj",
         "packagesPath": "C:\\Users\\Vyacheslav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vyacheslav\\Desktop\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\obj\\",
+        "outputPath": "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

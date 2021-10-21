@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MnxrPahUor0xXla60TddNsPPCtWtvFarZZ3PPvBpElVO28AD9AfIgXKlwSu22LoH/0ZM8CwBIg2mZmYd7NsuEw==",
+  "dgSpecHash": "Ix7Yy4uTlgKzyJOgoZn0oR6qIoiaycg4P5HM8pjfZVJPSvmNi01xd+RDIml9pBnILRsUVo3qoPnkKMcnLlbTdg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Vyacheslav\\Desktop\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Core\\Server.Domain.Core.csproj",
+  "projectFilePath": "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Core\\Server.Domain.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
