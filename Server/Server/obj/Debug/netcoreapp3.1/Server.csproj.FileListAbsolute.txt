@@ -354,3 +354,4 @@ D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\obj\Debug\netcorea
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\obj\Debug\netcoreapp3.1\Server.dll
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\obj\Debug\netcoreapp3.1\Server.pdb
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\obj\Debug\netcoreapp3.1\Server.genruntimeconfig.cache
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
