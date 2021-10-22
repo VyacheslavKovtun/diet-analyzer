@@ -16,11 +16,20 @@ namespace Server.Controllers
         {
             _userManager = uManager;
             _roleManager = rManager;
+
+            /*_roleManager.CreateAsync(new IdentityRole("Admin")).Wait();
+
+            var user1 = _userManager.FindByEmailAsync("kovtyn11191@gmail.com").Result;
+            var user2 = _userManager.FindByEmailAsync("kovtun.v.work@gmail.com").Result;
+
+            var adminRole = _roleManager.FindByNameAsync("Admin").Result;
+            _userManager.AddToRoleAsync(user1, adminRole.ToString()).Wait();
+            _userManager.AddToRoleAsync(user2, adminRole.ToString()).Wait();*/
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_userManager.Users.ToList());
+            return View(await _userManager.GetUsersInRoleAsync("Admin"));
         }
     }
 }

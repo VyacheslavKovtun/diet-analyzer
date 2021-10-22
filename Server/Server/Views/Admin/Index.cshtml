@@ -1,7 +1,14 @@
-﻿@{
+﻿@model IList<Microsoft.AspNetCore.Identity.IdentityUser>
+
+@{
     ViewData["Title"] = "Admin Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Admin</h1>
+
+    @foreach (var item in Model)
+    {
+        <h2>@item.UserName</h2>
+    }
 </div>
