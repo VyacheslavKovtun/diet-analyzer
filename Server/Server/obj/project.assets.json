@@ -2732,6 +2732,23 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Server.Infrastructure.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.20",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.20",
+          "Microsoft.AspNetCore.Identity.UI": "3.1.20",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.20",
+          "Microsoft.EntityFrameworkCore.Tools": "3.1.20"
+        },
+        "compile": {
+          "bin/placeholder/Server.Infrastructure.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Server.Infrastructure.Data.dll": {}
+        }
       }
     }
   },
@@ -8890,6 +8907,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Server.Infrastructure.Data/1.0.0": {
+      "type": "project",
+      "path": "../Server.Infrastructure.Data/Server.Infrastructure.Data.csproj",
+      "msbuildProject": "../Server.Infrastructure.Data/Server.Infrastructure.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8901,7 +8923,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.20",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.5",
       "Microsoft.VisualStudio.Web.CodeGeneration.Utils >= 3.1.5",
-      "SendGrid >= 9.24.3"
+      "SendGrid >= 9.24.3",
+      "Server.Infrastructure.Data >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8938,7 +8961,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Infrastructure.Data\\Server.Infrastructure.Data.csproj": {
+              "projectPath": "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Infrastructure.Data\\Server.Infrastructure.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

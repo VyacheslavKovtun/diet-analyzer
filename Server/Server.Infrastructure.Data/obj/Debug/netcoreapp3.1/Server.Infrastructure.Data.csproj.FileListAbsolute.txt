@@ -8,3 +8,6 @@ D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Dat
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Data\obj\Debug\netcoreapp3.1\Server.Infrastructure.Data.csproj.CoreCompileInputs.cache
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Data\obj\Debug\netcoreapp3.1\Server.Infrastructure.Data.dll
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Data\obj\Debug\netcoreapp3.1\Server.Infrastructure.Data.pdb
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Data\bin\Debug\netcoreapp3.1\Server.Infrastructure.Data.runtimeconfig.json
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Data\bin\Debug\netcoreapp3.1\Server.Infrastructure.Data.runtimeconfig.dev.json
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Data\obj\Debug\netcoreapp3.1\Server.Infrastructure.Data.genruntimeconfig.cache

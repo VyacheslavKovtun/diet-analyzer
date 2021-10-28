@@ -39,6 +39,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.5",
           "Microsoft.VisualStudio.Web.CodeGeneration.Utils": "3.1.5",
           "SendGrid": "9.24.3",
+          "Server.Infrastructure.Data": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -2371,6 +2372,21 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0"
+        }
+      },
+      "Server.Infrastructure.Data/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.20",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.20",
+          "Microsoft.AspNetCore.Identity.UI": "3.1.20",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.20",
+          "Microsoft.EntityFrameworkCore.Tools": "3.1.20"
+        },
+        "runtime": {
+          "Server.Infrastructure.Data.dll": {}
+        },
+        "compile": {
+          "Server.Infrastructure.Data.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -5148,6 +5164,11 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "Server.Infrastructure.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
       "type": "referenceassembly",
