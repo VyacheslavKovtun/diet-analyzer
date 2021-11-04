@@ -2382,6 +2382,14 @@
           "Server.Domain.Core.dll": {}
         }
       },
+      "Server.Domain.Interfaces/1.0.0": {
+        "runtime": {
+          "Server.Domain.Interfaces.dll": {}
+        },
+        "compile": {
+          "Server.Domain.Interfaces.dll": {}
+        }
+      },
       "Server.Infrastructure.Data/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.20",
@@ -2389,7 +2397,8 @@
           "Microsoft.AspNetCore.Identity.UI": "3.1.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.20",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.20",
-          "Server.Domain.Core": "1.0.0"
+          "Server.Domain.Core": "1.0.0",
+          "Server.Domain.Interfaces": "1.0.0"
         },
         "runtime": {
           "Server.Infrastructure.Data.dll": {}
@@ -5175,6 +5184,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "Server.Domain.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Server.Domain.Interfaces/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

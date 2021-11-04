@@ -359,3 +359,5 @@ D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcorea
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcoreapp3.1\Server.Domain.Core.dll
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcoreapp3.1\Server.Domain.Core.pdb
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcoreapp3.1\Server.Domain.Interfaces.dll
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcoreapp3.1\Server.Domain.Interfaces.pdb

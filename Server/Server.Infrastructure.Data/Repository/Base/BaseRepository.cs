@@ -10,7 +10,7 @@ namespace Server.Infrastructure.Data.Repository.Base
 {
     public abstract class BaseRepository<TKey, TValue> : IRepositoryAsync<TKey, TValue>
         where TKey : struct
-        where TValue: class
+        where TValue : class
     {
         protected ApplicationDbContext ctx;
         protected DbSet<TValue> table => ctx.Set<TValue>();
