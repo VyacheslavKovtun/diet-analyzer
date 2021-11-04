@@ -1529,6 +1529,16 @@
         "runtime": {
           "bin/placeholder/Server.Domain.Core.dll": {}
         }
+      },
+      "Server.Domain.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Server.Domain.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Server.Domain.Interfaces.dll": {}
+        }
       }
     }
   },
@@ -5701,6 +5711,11 @@
       "type": "project",
       "path": "../Server.Domain.Core/Server.Domain.Core.csproj",
       "msbuildProject": "../Server.Domain.Core/Server.Domain.Core.csproj"
+    },
+    "Server.Domain.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../Server.Domain.Interfaces/Server.Domain.Interfaces.csproj",
+      "msbuildProject": "../Server.Domain.Interfaces/Server.Domain.Interfaces.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5710,7 +5725,8 @@
       "Microsoft.AspNetCore.Identity.UI >= 3.1.20",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.20",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.20",
-      "Server.Domain.Core >= 1.0.0"
+      "Server.Domain.Core >= 1.0.0",
+      "Server.Domain.Interfaces >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5750,6 +5766,9 @@
           "projectReferences": {
             "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Core\\Server.Domain.Core.csproj": {
               "projectPath": "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Core\\Server.Domain.Core.csproj"
+            },
+            "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\Server.Domain.Interfaces.csproj": {
+              "projectPath": "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Interfaces\\Server.Domain.Interfaces.csproj"
             }
           }
         }
