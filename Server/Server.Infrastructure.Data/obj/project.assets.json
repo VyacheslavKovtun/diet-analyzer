@@ -1519,6 +1519,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Server.Domain.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Server.Domain.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Server.Domain.Core.dll": {}
+        }
       }
     }
   },
@@ -5686,6 +5696,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Server.Domain.Core/1.0.0": {
+      "type": "project",
+      "path": "../Server.Domain.Core/Server.Domain.Core.csproj",
+      "msbuildProject": "../Server.Domain.Core/Server.Domain.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5694,7 +5709,8 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.20",
       "Microsoft.AspNetCore.Identity.UI >= 3.1.20",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.20",
-      "Microsoft.EntityFrameworkCore.Tools >= 3.1.20"
+      "Microsoft.EntityFrameworkCore.Tools >= 3.1.20",
+      "Server.Domain.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5731,7 +5747,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Core\\Server.Domain.Core.csproj": {
+              "projectPath": "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Domain.Core\\Server.Domain.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
