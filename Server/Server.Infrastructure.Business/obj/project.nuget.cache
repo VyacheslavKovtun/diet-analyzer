@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "RXwz5bcQIfavWtdJZTGmlJfW3fmKOrKEXq0hq6ksDZiLiTYgXttp9DnTVwlkGqkZV5VKuviCnFwNmLY3xd9xBA==",
+  "dgSpecHash": "2EHsQbS67lNK/ooZrKp1hNvBT3SBNNs5rHAWrpJhIjTugfK4nsXVIoqXBJ9Mjhy1TpDs8flsCH/325yAyiUumg==",
   "success": true,
   "projectFilePath": "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Infrastructure.Business\\Server.Infrastructure.Business.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Vyacheslav\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Vyacheslav\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Vyacheslav\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }
