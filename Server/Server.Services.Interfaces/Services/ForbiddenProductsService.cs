@@ -46,6 +46,13 @@ namespace Server.Services.Interfaces.Services
             return mapper.Mapper.Map<ForbiddenProductDTO>(prod);
         }
 
+        public async Task<List<ForbiddenProductDTO>> GetForbiddenProductsByUserIdAsync(Guid id)
+        {
+            var prods = await GetAllForbiddenProductsAsync();
+
+            return prods.FindAll(p => p.UserId == id);
+        }
+
         public async Task UpdateForbiddenProductAsync(ForbiddenProductDTO forbiddenProduct)
         {
             var prod = mapper.Mapper.Map<ForbiddenProduct>(forbiddenProduct);

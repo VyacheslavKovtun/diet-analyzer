@@ -46,6 +46,13 @@ namespace Server.Services.Interfaces.Services
             return mapper.Mapper.Map<IngredientsExpenseDTO>(exp);
         }
 
+        public async Task<List<IngredientsExpenseDTO>> GetIngredientsExpensesByUserIdAsync(Guid id)
+        {
+            var exp = await GetAllIngredientsExpensesAsync();
+
+            return exp.FindAll(e => e.UserId == id);
+        }
+
         public async Task UpdateIngredientsExpenseAsync(IngredientsExpenseDTO ingredientsExpense)
         {
             var exp = mapper.Mapper.Map<IngredientsExpense>(ingredientsExpense);

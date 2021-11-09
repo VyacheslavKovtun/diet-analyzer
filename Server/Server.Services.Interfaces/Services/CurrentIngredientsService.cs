@@ -46,6 +46,13 @@ namespace Server.Services.Interfaces.Services
             return mapper.Mapper.Map<CurrentIngredientDTO>(ingr);
         }
 
+        public async Task<List<CurrentIngredientDTO>> GetCurrentIngredientsByUserIdAsync(Guid id)
+        {
+            var ingrs = await GetAllCurrentIngredientsAsync();
+
+            return ingrs.FindAll(i => i.UserId == id);
+        }
+
         public async Task UpdateCurrentIngredientAsync(CurrentIngredientDTO currentIngredient)
         {
             var ingr = mapper.Mapper.Map<CurrentIngredient>(currentIngredient);

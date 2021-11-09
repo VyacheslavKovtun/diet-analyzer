@@ -46,6 +46,13 @@ namespace Server.Services.Interfaces.Services
             return mapper.Mapper.Map<FavouriteRecipeDTO>(recipe);
         }
 
+        public async Task<List<FavouriteRecipeDTO>> GetFavouriteRecipesByUserIdAsync(Guid id)
+        {
+            var recipes = await GetAllFavouriteRecipesAsync();
+
+            return recipes.FindAll(r => r.UserId == id);
+        }
+
         public async Task UpdateFavouriteRecipeAsync(FavouriteRecipeDTO favouriteRecipe)
         {
             var recipe = mapper.Mapper.Map<FavouriteRecipe>(favouriteRecipe);

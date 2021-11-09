@@ -46,6 +46,13 @@ namespace Server.Services.Interfaces.Services
             return mapper.Mapper.Map<ForbiddenIngredientDTO>(ingr);
         }
 
+        public async Task<List<ForbiddenIngredientDTO>> GetForbiddenIngredientsByUserIdAsync(Guid id)
+        {
+            var ingrs = await GetAllForbiddenIngredientsAsync();
+
+            return ingrs.FindAll(i => i.UserId == id);
+        }
+
         public async Task UpdateForbiddenIngredientAsync(ForbiddenIngredientDTO forbiddenIngredient)
         {
             var ingr = mapper.Mapper.Map<ForbiddenIngredient>(forbiddenIngredient);
