@@ -6,10 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Server.Infrastructure.Business\Server.Infrastructure.Business.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\Server.Infrastructure.Data\Server.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>
