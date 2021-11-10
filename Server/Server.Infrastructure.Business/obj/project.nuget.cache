@@ -1,8 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "5vhTIVa0gVGVfkilGH9qE1zuMe/pM12Owx2eFVFtSOr8CJKul/BLFZhJr0+1bi9oUpllgkFXtT9MFq7VTaqceA==",
+  "dgSpecHash": "tY+xLgRCpV3zo2pdaPg89PVGtPbUoT0TDTpWHBbOf1SV2oTRwMa/pkqxzep13tAvwGMZibS28ERSc+iAJx4IFA==",
   "success": true,
   "projectFilePath": "D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Infrastructure.Business\\Server.Infrastructure.Business.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "expectedPackageFiles": [
+    "C:\\Users\\Vyacheslav\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Vyacheslav\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Vyacheslav\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\Projects\\ASP.NET Core + Angular\\DietAnalyzer\\Server\\Server.Infrastructure.Business\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
