@@ -8,3 +8,6 @@ D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Bus
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Business\obj\Debug\netcoreapp3.1\Server.Infrastructure.Business.csproj.CoreCompileInputs.cache
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Business\obj\Debug\netcoreapp3.1\Server.Infrastructure.Business.dll
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Business\obj\Debug\netcoreapp3.1\Server.Infrastructure.Business.pdb
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Business\bin\Debug\netcoreapp3.1\Server.Domain.Core.dll
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Business\bin\Debug\netcoreapp3.1\Server.Domain.Core.pdb
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Infrastructure.Business\obj\Debug\netcoreapp3.1\Server.Infrastructure.Business.csproj.CopyComplete

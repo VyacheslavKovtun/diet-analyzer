@@ -8,3 +8,12 @@ D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interface
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\obj\Debug\netcoreapp3.1\Server.Services.Interfaces.csproj.CoreCompileInputs.cache
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\obj\Debug\netcoreapp3.1\Server.Services.Interfaces.dll
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\obj\Debug\netcoreapp3.1\Server.Services.Interfaces.pdb
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\bin\Debug\netcoreapp3.1\Server.Domain.Core.dll
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\bin\Debug\netcoreapp3.1\Server.Domain.Interfaces.dll
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\bin\Debug\netcoreapp3.1\Server.Infrastructure.Business.dll
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\bin\Debug\netcoreapp3.1\Server.Infrastructure.Data.dll
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\bin\Debug\netcoreapp3.1\Server.Infrastructure.Business.pdb
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\bin\Debug\netcoreapp3.1\Server.Infrastructure.Data.pdb
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\bin\Debug\netcoreapp3.1\Server.Domain.Core.pdb
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\bin\Debug\netcoreapp3.1\Server.Domain.Interfaces.pdb
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server.Services.Interfaces\obj\Debug\netcoreapp3.1\Server.Services.Interfaces.csproj.CopyComplete

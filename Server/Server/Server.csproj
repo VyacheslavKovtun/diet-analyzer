@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Server.Infrastructure.Data\Server.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Server.Services.Interfaces\Server.Services.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>
