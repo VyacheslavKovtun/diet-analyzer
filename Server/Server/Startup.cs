@@ -52,7 +52,7 @@ namespace Server
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(options =>
-            options.WithOrigins() //ip of angular project
+            options.WithOrigins("http://localhost:4200") //ip of angular project
             .AllowAnyMethod()
             .AllowAnyHeader());
 
