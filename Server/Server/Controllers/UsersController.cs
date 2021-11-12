@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Server.Services.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,17 +21,25 @@ namespace Server.Controllers
 
         private string API_KEY;
 
-        public UsersController()
+        UserManager<IdentityUser> userManager;
+        SignInManager<IdentityUser> signInManager;
+        ApiUsersService apiUsersService;
+
+        public UsersController(ApiUsersService apiUsersService, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             API_KEY = Environment.GetEnvironmentVariable("SPOONACULAR_API_KEY");
 
             url = "https://api.spoonacular.com/users/connect" + "?apiKey=" + API_KEY;
+
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.apiUsersService = apiUsersService;
         }
 
         [HttpPost]
-        public string Post()
+        public async Task<IActionResult> Post()
         {
-            var values = new Dictionary<string, string>
+            /*var values = new Dictionary<string, string>
             {
                 {"username", "VyacheslavW" },
                 {"firstName", "Vyacheslav" },
@@ -42,7 +52,19 @@ namespace Server.Controllers
 
             var response = client.PostAsync(url, httpContent).Result;
             var str = response.Content.ReadAsStringAsync().Result;
-            return str;
+            return str;*/
+
+            /*var user = await userManager.FindByEmailAsync("kovtun.v.work@gmail.com");
+
+            await apiUsersService.CreateNewApiUserAsync(new Infrastructure.Business.DTO.ApiUserDTO
+            {
+                Id = Guid.Parse(user.Id),
+                Username = "api-103995-vyacheslavw",
+                ApiPassword = "grilledzucchini&19cocoapowder",
+                Hash = "557054f80c98f9bd9c82b67ae71d959ea3e8e066"
+            });*/
+
+            return Ok();
         }
     }
 }

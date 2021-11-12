@@ -66,6 +66,25 @@ namespace Server
             services.AddTransient<IRecipesBaseInfoService, RecipesBaseInfoService>();
             services.AddTransient<IFavouriteRecipesService, FavouriteRecipesService>();
 
+            services.AddTransient<ApiUsersService>();
+            services.AddTransient<BaseInfoService>();
+            services.AddTransient<CaloricInfoService>();
+
+            services.AddTransient<IngredientsBaseInfoService>();
+            services.AddTransient<CurrentIngredientsService>();
+            services.AddTransient<ForbiddenIngredientsService>();
+            services.AddTransient<IngredientsStatisticService>();
+            services.AddTransient<IngredientsExpensesService>();
+
+            services.AddTransient<ProductsBaseInfoService>();
+            services.AddTransient<CurrentProductsService>();
+            services.AddTransient<ForbiddenProductsService>();
+            services.AddTransient<ProductsStatisticService>();
+            services.AddTransient<ProductsExpensesService>();
+
+            services.AddTransient<RecipesBaseInfoService>();
+            services.AddTransient<FavouriteRecipesService>();
+
             services.AddRazorPages();
 
             services.AddCors();
