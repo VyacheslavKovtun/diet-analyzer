@@ -54,6 +54,13 @@ namespace Server.Controllers
             var str = response.Content.ReadAsStringAsync().Result;
             return str;*/
 
+           /* if (result.Succeeded)
+            {
+                await signInManager.SignInAsync(user, isPersistent: false);
+
+                return RedirectToAction("index", "Home");
+            }*/
+
             /*var user = await userManager.FindByEmailAsync("kovtun.v.work@gmail.com");
 
             await apiUsersService.CreateNewApiUserAsync(new Infrastructure.Business.DTO.ApiUserDTO

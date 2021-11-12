@@ -1,1 +1,56 @@
-<p>nav-menu works!</p>
+<header>
+    <nav class="navbar">
+        <div class="circle"></div>
+        <div class="top-container">
+            <mat-toolbar class="toolbar">
+                <button mat-flat-button class="title-button" [routerLink]="['/']">
+                    <span class="title">EDA</span>
+                </button>
+                <span class="example-spacer"></span>
+
+                <button [routerLinkActive]="['link-active']" 
+                [routerLinkActiveOptions]="{ exact: true }" 
+                [routerLink]="['/']"
+                 mat-flat-button class="toolbar-menu-button">
+                    <span class="toolbar-menu-button-title">Home</span>
+                </button>
+
+                <button [routerLinkActive]="['link-active']" [routerLink]="['/fridge']"
+                 mat-flat-button class="toolbar-menu-button">
+                    <span class="toolbar-menu-button-title">Fridge</span>
+                </button>
+
+                <button [routerLinkActive]="['link-active']" [routerLink]="['/recipes']"
+                 mat-flat-button class="toolbar-menu-button">
+                    <span class="toolbar-menu-button-title">Recipes</span>
+                </button>
+
+                <button [routerLinkActive]="['link-active']" [routerLink]="['/meal-planner']"
+                 mat-flat-button class="toolbar-menu-button">
+                    <span class="toolbar-menu-button-title">Meal Planner</span>
+                </button>
+
+                <button [routerLinkActive]="['link-active']" [routerLink]="['/shopping-list']"
+                 mat-flat-button class="toolbar-menu-button">
+                    <span class="toolbar-menu-button-title">Shopping List</span>
+                </button>
+
+                <button [routerLinkActive]="['link-active']" [routerLink]="['/expenses']"
+                 mat-flat-button class="toolbar-menu-button">
+                    <span class="toolbar-menu-button-title">Expenses</span>
+                </button>
+
+                <button [routerLinkActive]="['link-active']" [routerLink]="['/login']"
+                 mat-flat-button class="toolbar-menu-button">
+                    <span class="toolbar-menu-button-title">Login</span>
+                </button>
+
+                <button [routerLinkActive]="['link-active']" href="#"
+                 mat-flat-button class="toolbar-menu-button">
+                    <span class="toolbar-menu-button-title">Logout</span>
+                </button>
+                
+              </mat-toolbar>
+        </div>
+    </nav>
+</header>
