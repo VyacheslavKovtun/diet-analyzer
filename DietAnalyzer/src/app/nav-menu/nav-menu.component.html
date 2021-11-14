@@ -1,10 +1,9 @@
 <header>
     <nav class="navbar">
-        <div class="circle"></div>
         <div class="top-container">
             <mat-toolbar class="toolbar">
                 <button mat-flat-button class="title-button" [routerLink]="['/']">
-                    <span class="title">EDA</span>
+                    <span class="title"><span id="title-light">E</span>DA</span>
                 </button>
                 <span class="example-spacer"></span>
 
@@ -41,8 +40,8 @@
                 </button>
 
                 <button [routerLinkActive]="['link-active']" [routerLink]="['/login']"
-                 mat-flat-button class="toolbar-menu-button">
-                    <span class="toolbar-menu-button-title">Login</span>
+                 mat-flat-button class="toolbar-menu-button" id="login-button">
+                    <span class="toolbar-menu-button-title" id="login-button-title">Login</span>
                 </button>
 
                 <button [routerLinkActive]="['link-active']" href="#"
@@ -50,7 +49,7 @@
                     <span class="toolbar-menu-button-title">Logout</span>
                 </button>
                 
-              </mat-toolbar>
+            </mat-toolbar>
         </div>
     </nav>
 </header>

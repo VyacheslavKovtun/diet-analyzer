@@ -3,22 +3,22 @@
   background-color: #C7DEC1;
 }
 
-.circle {
-  position: fixed;
-  left: -10%;
-  right: -10%;
-  top: -500px;
-  background-color: #C7DEC1;
-  height: 1000px;
-  width: 120%;
-  border-radius: 50%;
-  z-index: -1;
+#title-light {
+  color: #ffff;
 }
 
 .title,
 .toolbar-menu-button-title {
   color: #346645;
   font-weight: bold; 
+}
+
+.title {
+  font-size: x-large;
+}
+
+#login-button-title {
+  color: #ffff;
 }
 
 .title-button,
@@ -28,4 +28,11 @@
 
 .example-spacer {
   flex: 1 1 auto;
+}
+
+#login-button {
+  background-color: #9ABF9C;
+  width: 10%;
+  height: 65%;
+  border-radius: 20px;
 }

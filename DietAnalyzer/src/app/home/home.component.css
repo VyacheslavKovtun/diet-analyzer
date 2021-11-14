@@ -1,0 +1,57 @@
+.circle {
+    position: absolute;
+    z-index: -1;
+    top: -70vh;
+    height: 160vh;
+    width: 100%;
+    border-radius: 50%;
+    background-color: #C7DEC1;
+}
+
+#title-light {
+    color: #ffff;
+}
+
+.big-center-title {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    margin-top: 2vh;
+}
+  
+.big-center-title-text {
+    font-family: "URW Chancery L, cursive";
+    font-size: 40vh;
+}
+  
+#big-center-title-top-letter {
+    position: relative;
+    z-index: 2;
+    /* color: #346645; */
+}
+  
+.top-picture {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 70vh;
+    margin-top: 19vh;
+    text-align: center;
+}
+  
+#top-center-image {
+    width: 60%;
+    height: 70vh;
+}
+
+.top-start-button {
+    text-align: center;
+}
+
+.start-button {
+    width: 15%;
+    height: 6.5vh;
+    border-radius: 20px;
+    color: #ffff;
+    background-color: #346645;
+}
