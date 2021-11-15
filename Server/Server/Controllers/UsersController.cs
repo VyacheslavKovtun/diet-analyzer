@@ -38,8 +38,68 @@ namespace Server.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post()
+        [Route("login")]
+        public async Task<IActionResult> Login()
         {
+            /*if (ModelState.IsValid)
+            {
+                //TODO: convert incoming info to LoginViewModel
+
+                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    // проверяем, принадлежит ли URL приложению
+                    if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+                    {
+                        return Ok(ModelState);
+                    }
+                    else
+                    {
+                        return BadRequest(ModelState);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Неправильный логин и (или) пароль");
+                    return BadRequest(ModelState);
+                }
+            }*/
+
+            return Ok(ModelState);
+        }
+
+        [HttpPost]
+        [Route("register")]
+        public async Task<IActionResult> Register()
+        {
+           /* if (ModelState.IsValid)
+            {
+                //TODO: convert incoming info to RegisterViewModel
+
+                IdentityUser user = new IdentityUser
+                {
+                    UserName = name,
+                    Email = email
+                };
+
+                // добавляем пользователя
+                var res = await userManager.CreateAsync(user, model.Password);
+                if (res.Succeeded)
+                {
+                    // установка куки
+                    await signInManager.SignInAsync(user, false);
+                    return Ok(ModelState);
+                }
+                else
+                {
+                    foreach (var error in res.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return BadRequest(ModelState);
+                }
+            }*/
+
             /*var values = new Dictionary<string, string>
             {
                 {"username", "VyacheslavW" },
@@ -55,12 +115,7 @@ namespace Server.Controllers
             var str = response.Content.ReadAsStringAsync().Result;
             return str;*/
 
-           /* if (result.Succeeded)
-            {
-                await signInManager.SignInAsync(user, isPersistent: false);
-
-                return RedirectToAction("index", "Home");
-            }*/
+            //TODO: check for api response before adding to table
 
             /*var user = await userManager.FindByEmailAsync("kovtun.v.work@gmail.com");
 
@@ -73,6 +128,15 @@ namespace Server.Controllers
             });*/
 
             return Ok();
+        }
+
+        [HttpPost]
+        [Route("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            /*// удаляем аутентификационные куки
+            await signInManager.SignOutAsync();*/
+            return Ok(ModelState);
         }
     }
 }

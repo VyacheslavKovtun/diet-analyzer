@@ -1,0 +1,41 @@
+.sel-buttons-container {
+    width: 100%;
+    background-color: #ffff;
+    border-color: #ffff;
+}
+
+#sel-login-button,
+#sel-signin-button {
+    width: 50%;
+    background-color: #9ABF9C;
+    color: #ffff;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 20px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.logInForm,
+.signInForm {
+    width: 100%;
+    text-align: center;
+    margin-top: 1%;
+}
+
+mat-label {
+    color: #9ABF9C;
+}
+
+.login-button {
+    width: 10%;
+    background-color: #9ABF9C;
+    color: #ffff;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 20px;
+    margin-top: 1%;
+}

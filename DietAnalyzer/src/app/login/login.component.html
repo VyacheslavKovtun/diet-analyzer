@@ -1,1 +1,65 @@
-<p>login works!</p>
+<mat-button-toggle-group class="sel-buttons-container" name="login">
+    <mat-button-toggle (change)="loginSelected()" id="sel-login-button" value="login">Log in</mat-button-toggle>
+    <mat-button-toggle (change)="signinSelected()" id="sel-signin-button" value="sign in">Sign in</mat-button-toggle>
+</mat-button-toggle-group>
+
+<!-- form for login -->
+<form *ngIf="isLogIn" class="logInForm" [formGroup]="logInForm"> 
+    <div>
+        <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Enter your email...">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" placeholder="Enter your password..."
+        [type]="hidePassword ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        </mat-form-field>
+    </div>
+
+    <mat-checkbox ([checked])="remember = true">
+        Remember me
+    </mat-checkbox>
+    
+    <div>
+    <button [disabled]="!logInForm.valid" mat-raised-button class="login-button" (click)="onBtnLogInFormClick()">Log in</button>
+    </div>
+</form>
+
+<!-- form for registering -->
+<form *ngIf="isSignIn" class="signInForm" [formGroup]="registerForm">
+    <div>
+        <mat-form-field appearance="fill">
+        <mat-label>User name</mat-label>
+        <input matInput formControlName="userName" placeholder="Enter your user name...">
+        </mat-form-field>
+    </div>
+    
+    <div>
+        <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Enter your email...">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" placeholder="Enter your password..."
+        [type]="hidePassword ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        </mat-form-field>
+    </div>
+
+    <div>
+    <button [disabled]="!registerForm.valid" mat-raised-button class="login-button" (click)="onBtnCheckInFormClick()">Check in</button>
+    </div>
+</form>
