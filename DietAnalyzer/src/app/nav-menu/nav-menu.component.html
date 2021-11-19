@@ -44,7 +44,7 @@
                     <span class="toolbar-menu-button-title" id="login-button-title">Login</span>
                 </button>
 
-                <button [routerLinkActive]="['link-active']" href="#"
+                <button [routerLinkActive]="['link-active']" (click)="logoutClick()" href="#"
                  mat-flat-button class="toolbar-menu-button">
                     <span class="toolbar-menu-button-title">Logout</span>
                 </button>
