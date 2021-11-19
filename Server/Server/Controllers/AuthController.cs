@@ -43,9 +43,14 @@ namespace Server.Controllers
             if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+                var user = await userManager.FindByEmailAsync(model.Email);
                 if (result.Succeeded)
                 {
-                    return Ok(ModelState);
+                    return new JsonResult(new
+                    {
+                        id = user.Id,
+                        name = user.UserName
+                    });
                 }
                 else
                 {

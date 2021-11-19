@@ -25,7 +25,7 @@ export class AuthService {
   login(email: string, password: string) {
     var returnUrl = this.url;
     
-    return this.httpClient.post
+    return this.httpClient.post<{ id: string, name: string}>
     (
       [environment.API_URL, 'auth', 'login'].join('/'),
       { email, password, returnUrl }

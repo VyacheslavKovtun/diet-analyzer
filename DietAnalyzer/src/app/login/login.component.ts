@@ -1,11 +1,12 @@
-import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/services/auth.service';
 import { ApiUser } from '../common/interfaces/api-user.interface';
-import { DialogElement } from '../shared/dialogs/dialog';
+import { WelcomeDialogElement } from '../shared/dialogs/welcome-dialog/welcome-dialog';
+import { WrongLoginDialogElement } from '../shared/dialogs/wrong-login-dialog/wrong-login-dialog';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +19,6 @@ export class LoginComponent implements OnInit {
 
   currentUser !: ApiUser;
 
-  dialogElement!: DialogElement;
-
   hidePassword = true;
 
   isLogIn = true;
@@ -27,9 +26,12 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router, public dialog: MatDialog) { }
 
-  openDialog(title: string, content: string, closeBtnTitle: string) {
-    this.dialogElement.setDialog(title, content, closeBtnTitle);
-    this.dialog.open(DialogElement);
+  openWelcomeDialog() {
+    this.dialog.open(WelcomeDialogElement);
+  }
+
+  openWrongLoginDialog() {
+    this.dialog.open(WrongLoginDialogElement);
   }
 
   ngOnInit(): void {
@@ -59,19 +61,24 @@ export class LoginComponent implements OnInit {
     if (this.logInForm.valid) {
       const { email, password } = this.logInForm.value;
       
-      this.authService.login(email, password).subscribe((res) => {
-        if(res == HttpStatusCode.Ok) {
-          //TODO: replace "id" by ApiUser id
-          localStorage.setItem("current_user", "id");
+      this.authService.login(email, password).subscribe(
+        (res) => {
+          if(res.id != null) {
+            // localStorage.setItem("current_user", res.id);
+            this.openWelcomeDialog();
 
-          this.openDialog("You are welcome!", "Welcome to EDA", "Close");
+            //TODO: create apiUsers service and get current user by id
 
-          this.router.navigate(['/']);
+            // this.router.navigate(['/']);
+          }
+          else if(res == null) {
+            this.openWrongLoginDialog();
+          }
+        },
+        (error) => {
+          this.openWrongLoginDialog();
         }
-        else if(res == HttpStatusCode.BadRequest) {
-          this.openDialog("Error", "Wrong login or password", "Try again");
-        }
-      });
+      );
     }
   }
 
