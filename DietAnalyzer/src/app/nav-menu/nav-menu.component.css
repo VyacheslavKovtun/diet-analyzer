@@ -17,7 +17,7 @@
   font-size: x-large;
 }
 
-#login-button-title {
+#log-button-title {
   color: #ffff;
 }
 
@@ -30,7 +30,7 @@
   flex: 1 1 auto;
 }
 
-#login-button {
+#log-button {
   background-color: #9ABF9C;
   width: 10%;
   height: 65%;

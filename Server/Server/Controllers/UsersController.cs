@@ -24,7 +24,6 @@ namespace Server.Controllers
 
         UserManager<IdentityUser> userManager;
         SignInManager<IdentityUser> signInManager;
-        ApiUsersService apiUsersService;
 
         public UsersController(ApiUsersService apiUsersService, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
@@ -34,7 +33,6 @@ namespace Server.Controllers
 
             this.userManager = userManager;
             this.signInManager = signInManager;
-            this.apiUsersService = apiUsersService;
         }
     }
 }

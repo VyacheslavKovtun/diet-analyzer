@@ -1,17 +1,20 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, of } from "rxjs";
+import { Injectable, OnInit } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
-import { tap } from 'rxjs/operators';
 import { Router } from "@angular/router";
 import { environment } from '../../../environments/environment';
-
+import { ApiUsersService } from "src/app/common/api/services/api.users.service";
 
 @Injectable()
-export class AuthService {
+export class AuthService{
+  isUserAuth$ = new BehaviorSubject<boolean>(false);
+
   url = "http://localhost:4200";
 
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(private httpClient: HttpClient, private router: Router, private apiUsersService: ApiUsersService) {
+    var isAuthed = this.isUserAuth();
+    this.isUserAuth$.next(isAuthed);
   }
 
   register(userName:string, email: string, password: string) {
@@ -34,12 +37,20 @@ export class AuthService {
 
   logout() {
     return this.httpClient.delete([environment.API_URL, 'auth', 'logout'].join('/')).subscribe(u => {
+      localStorage.removeItem("current_user");
+      this.isUserAuth$.next(false);
       this.router.navigate(['/login']);
     });
   }
 
   isUserAuth(): boolean {
-    
-    return false;
+    var id = localStorage.getItem("current_user");
+
+    if(id != null) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 }

@@ -6,7 +6,7 @@ import { AuthService } from '../auth/services/auth.service';
 import { ApiUser } from '../common/interfaces/api-user.interface';
 import { WelcomeDialogElement } from '../shared/dialogs/welcome-dialog/welcome-dialog';
 import { WrongLoginDialogElement } from '../shared/dialogs/wrong-login-dialog/wrong-login-dialog';
-import { catchError } from 'rxjs/operators';
+import { ApiUsersService } from '../common/api/services/api.users.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   isLogIn = true;
   isSignIn = false;
 
-  constructor(private authService: AuthService, private router: Router, public dialog: MatDialog) { }
+  constructor(private authService: AuthService, private apiUsersService: ApiUsersService, private router: Router, public dialog: MatDialog) { }
 
   openWelcomeDialog() {
     this.dialog.open(WelcomeDialogElement);
@@ -64,12 +64,15 @@ export class LoginComponent implements OnInit {
       this.authService.login(email, password).subscribe(
         (res) => {
           if(res.id != null) {
-            // localStorage.setItem("current_user", res.id);
-            this.openWelcomeDialog();
+            this.apiUsersService.getApiUserById(res.id).subscribe(user => {
+              this.currentUser = user;
 
-            //TODO: create apiUsers service and get current user by id
+              window.location.reload();
+            });
 
-            // this.router.navigate(['/']);
+            localStorage.setItem("current_user", res.id);
+
+            this.router.navigate(['/']);
           }
           else if(res == null) {
             this.openWrongLoginDialog();

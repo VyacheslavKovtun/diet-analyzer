@@ -14,7 +14,7 @@
                     <span class="toolbar-menu-button-title">Home</span>
                 </button>
 
-                <button [routerLinkActive]="['link-active']" [routerLink]="['/fridge']"
+                <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/fridge']"
                  mat-flat-button class="toolbar-menu-button">
                     <span class="toolbar-menu-button-title">Fridge</span>
                 </button>
@@ -24,29 +24,29 @@
                     <span class="toolbar-menu-button-title">Recipes</span>
                 </button>
 
-                <button [routerLinkActive]="['link-active']" [routerLink]="['/meal-planner']"
+                <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/meal-planner']"
                  mat-flat-button class="toolbar-menu-button">
                     <span class="toolbar-menu-button-title">Meal Planner</span>
                 </button>
 
-                <button [routerLinkActive]="['link-active']" [routerLink]="['/shopping-list']"
+                <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/shopping-list']"
                  mat-flat-button class="toolbar-menu-button">
                     <span class="toolbar-menu-button-title">Shopping List</span>
                 </button>
 
-                <button [routerLinkActive]="['link-active']" [routerLink]="['/expenses']"
+                <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/expenses']"
                  mat-flat-button class="toolbar-menu-button">
                     <span class="toolbar-menu-button-title">Expenses</span>
                 </button>
 
-                <button [routerLinkActive]="['link-active']" [routerLink]="['/login']"
-                 mat-flat-button class="toolbar-menu-button" id="login-button">
-                    <span class="toolbar-menu-button-title" id="login-button-title">Login</span>
+                <button *ngIf="!authed" [routerLinkActive]="['link-active']" [routerLink]="['/login']"
+                 mat-flat-button class="toolbar-menu-button" id="log-button">
+                    <span class="toolbar-menu-button-title" id="log-button-title">Login</span>
                 </button>
 
-                <button [routerLinkActive]="['link-active']" (click)="logoutClick()" href="#"
-                 mat-flat-button class="toolbar-menu-button">
-                    <span class="toolbar-menu-button-title">Logout</span>
+                <button *ngIf="authed" [routerLinkActive]="['link-active']" (click)="logoutClick()" href="#"
+                 mat-flat-button class="toolbar-menu-button" id="log-button">
+                    <span class="toolbar-menu-button-title" id="log-button-title">Logout</span>
                 </button>
                 
             </mat-toolbar>

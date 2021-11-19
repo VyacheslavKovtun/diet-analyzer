@@ -61,6 +61,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ApiUsersService } from './common/api/services/api.users.service';
 
 @NgModule({
   declarations: [
@@ -136,7 +137,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, ApiUsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

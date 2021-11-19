@@ -7,12 +7,16 @@ import { AuthService } from '../auth/services/auth.service';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit {
+  authed: boolean = false;
 
   constructor(private authService: AuthService) {
-    
+    this.authService.isUserAuth$.subscribe(res => {
+      this.authed = res;
+    });
   }
 
   ngOnInit(): void {
+    
   }
 
   logoutClick() {
