@@ -31,6 +31,7 @@ namespace Server.Controllers
             return users;
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ApiUserDTO> Get(string id)
         {
@@ -52,6 +53,7 @@ namespace Server.Controllers
             return BadRequest(ModelState);
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

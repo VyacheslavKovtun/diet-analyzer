@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Server.Infrastructure.Business.DTO;
 using Server.Models;
 using Server.Services.Interfaces.Services;
 using System;
@@ -36,14 +38,40 @@ namespace Server.Controllers
             this.apiUsersService = apiUsersService;
         }
 
+        [HttpGet]
+        [Route("isAuthed")]
+        public bool GetIsAuthed()
+        {
+            var isAuthed = signInManager.IsSignedIn(this.User);
+            return isAuthed;
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("current-user")]
+        public async Task<ApiUserDTO> GetCurrentUser()
+        {
+            var identityUser = await userManager.GetUserAsync(this.User);
+            if (identityUser != null)
+            {
+                var gId = Guid.Parse(identityUser.Id);
+
+                var apiUser = await this.apiUsersService.GetApiUserByIdAsync(gId);
+
+                return apiUser;
+            }
+            else return null;
+        }
+
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 var user = await userManager.FindByEmailAsync(model.Email);
+
                 if (result.Succeeded)
                 {
                     return new JsonResult(new
@@ -72,9 +100,7 @@ namespace Server.Controllers
                     Email = email
                 };
 
-                // добавляем пользователя
                 var res = await userManager.CreateAsync(user, model.Password);
-                Claim claim = new Claim("Identity claim", user.Id);
                 if (res.Succeeded)
                 {
                     await signInManager.SignInAsync(user, false);
@@ -120,11 +146,11 @@ namespace Server.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpDelete]
         [Route("logout")]
         public async Task<IActionResult> Logout()
         {
-            // удаляем аутентификационные куки
             await signInManager.SignOutAsync();
             return Ok(ModelState);
         }

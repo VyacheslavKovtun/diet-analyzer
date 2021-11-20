@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
 
   isLogIn = true;
   isSignIn = false;
+  remember = false;
 
   constructor(private authService: AuthService, private apiUsersService: ApiUsersService, private router: Router, public dialog: MatDialog) { }
 
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
     if (this.logInForm.valid) {
       const { email, password } = this.logInForm.value;
       
-      this.authService.login(email, password).subscribe(
+      this.authService.login(email, password, this.remember).subscribe(
         (res) => {
           if(res.id != null) {
             this.apiUsersService.getApiUserById(res.id).subscribe(user => {
@@ -69,8 +70,6 @@ export class LoginComponent implements OnInit {
 
               window.location.reload();
             });
-
-            localStorage.setItem("current_user", res.id);
 
             this.router.navigate(['/']);
           }

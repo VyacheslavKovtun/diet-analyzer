@@ -13,11 +13,11 @@ export class ApiUsersService
     }
 
     getApiUsers() {
-        return this.http.get<ApiUser[]>(this.url);
+        return this.http.get<ApiUser[]>(this.url, { withCredentials: true });
     }
 
     getApiUserById(id: string) {
-        return this.http.get<ApiUser>(this.url + '/' + id);
+        return this.http.get<ApiUser>(this.url + '/' + id, { withCredentials: true });
     }
 
     createApiUser(user: ApiUser) {
@@ -25,11 +25,12 @@ export class ApiUsersService
         var headerOptions = new HttpHeaders({'Content-Type':'application/json'});
         
         return this.http.post(this.url, body, {
-            headers: headerOptions
+            headers: headerOptions,
+            withCredentials: true
         });
     }
 
     deleteApiUser(id: string) {
-        return this.http.delete(this.url + '/' + id);
+        return this.http.delete(this.url + '/' + id, { withCredentials: true });
     }
 }
