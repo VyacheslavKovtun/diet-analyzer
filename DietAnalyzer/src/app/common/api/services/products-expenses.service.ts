@@ -20,8 +20,8 @@ export class ProductsExpensesService
         return this.http.get<ProductsExpense>(this.url + '/' + id, { withCredentials: true });
     }
 
-    getProductsExpenseByUserId(id: string) {
-        return this.http.get<ProductsExpense>(this.url + '/user/' + id, { withCredentials: true });
+    getProductsExpensesByUserId(id: string) {
+        return this.http.get<ProductsExpense[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
     createProductsExpense(expense: ProductsExpense) {

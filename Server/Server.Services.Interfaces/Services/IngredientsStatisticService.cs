@@ -46,7 +46,7 @@ namespace Server.Services.Interfaces.Services
             return mapper.Mapper.Map<IngredientStatisticDTO>(stat);
         }
 
-        public async Task UpdateIngredientsStatisticAsync(IngredientStatisticDTO ingredientStatistic)
+        public async Task UpdateIngredientStatisticAsync(IngredientStatisticDTO ingredientStatistic)
         {
             var stat = mapper.Mapper.Map<IngredientStatistic>(ingredientStatistic);
 

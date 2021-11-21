@@ -20,8 +20,8 @@ export class FavouriteRecipesService
         return this.http.get<FavouriteRecipe>(this.url + '/' + id, { withCredentials: true });
     }
 
-    getFavouriteRecipeByUserId(id: string) {
-        return this.http.get<FavouriteRecipe>(this.url + '/user/' + id, { withCredentials: true });
+    getFavouriteRecipesByUserId(id: string) {
+        return this.http.get<FavouriteRecipe[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
     createFavouriteRecipe(recipe: FavouriteRecipe) {

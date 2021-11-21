@@ -20,8 +20,8 @@ export class ForbiddenIngredientsService
         return this.http.get<ForbiddenIngredient>(this.url + '/' + id, { withCredentials: true });
     }
 
-    getForbiddenIngredientByUserId(id: string) {
-        return this.http.get<ForbiddenIngredient>(this.url + '/user/' + id, { withCredentials: true });
+    getForbiddenIngredientsByUserId(id: string) {
+        return this.http.get<ForbiddenIngredient[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
     createForbiddenIngredient(ingredient: ForbiddenIngredient) {

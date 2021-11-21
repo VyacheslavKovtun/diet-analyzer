@@ -20,8 +20,8 @@ export class CurrentProductsService
         return this.http.get<CurrentProduct>(this.url + '/' + id, { withCredentials: true });
     }
 
-    getCurrentProductByUserId(id: string) {
-        return this.http.get<CurrentProduct>(this.url + '/user/' + id, { withCredentials: true });
+    getCurrentProductsByUserId(id: string) {
+        return this.http.get<CurrentProduct[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
     createCurrentProduct(product: CurrentProduct) {

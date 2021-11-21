@@ -20,8 +20,8 @@ export class ForbiddenProductsService
         return this.http.get<ForbiddenProduct>(this.url + '/' + id, { withCredentials: true });
     }
 
-    getForbiddenProductByUserId(id: string) {
-        return this.http.get<ForbiddenProduct>(this.url + '/user/' + id, { withCredentials: true });
+    getForbiddenProductsByUserId(id: string) {
+        return this.http.get<ForbiddenProduct[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
     createForbiddenProduct(product: ForbiddenProduct) {

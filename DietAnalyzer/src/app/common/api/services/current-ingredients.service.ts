@@ -20,8 +20,8 @@ export class CurrentIngredientsService
         return this.http.get<CurrentIngredient>(this.url + '/' + id, { withCredentials: true });
     }
 
-    getCurrentIngredientByUserId(id: string) {
-        return this.http.get<CurrentIngredient>(this.url + '/user/' + id, { withCredentials: true });
+    getCurrentIngredientsByUserId(id: string) {
+        return this.http.get<CurrentIngredient[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
     createCurrentIngredient(ingredient: CurrentIngredient) {

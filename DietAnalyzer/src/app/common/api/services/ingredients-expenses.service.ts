@@ -20,8 +20,8 @@ export class IngredientsExpensesService
         return this.http.get<IngredientsExpense>(this.url + '/' + id, { withCredentials: true });
     }
 
-    getIngredientsExpenseByUserId(id: string) {
-        return this.http.get<IngredientsExpense>(this.url + '/user/' + id, { withCredentials: true });
+    getIngredientsExpensesByUserId(id: string) {
+        return this.http.get<IngredientsExpense[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
     createIngredientsExpense(expense: IngredientsExpense) {
