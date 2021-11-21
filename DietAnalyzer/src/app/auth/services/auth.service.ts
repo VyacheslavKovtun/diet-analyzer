@@ -25,7 +25,7 @@ export class AuthService{
       });
   }
 
-  register(userName:string, email: string, password: string) {
+  register(userName: string, email: string, password: string) {
     return this.httpClient.post
     (
       [environment.API_URL, 'auth', 'register'].join('/'),

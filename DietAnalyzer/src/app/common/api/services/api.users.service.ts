@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Inject, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { ApiUser } from "../../interfaces/api-user.interface";
 
