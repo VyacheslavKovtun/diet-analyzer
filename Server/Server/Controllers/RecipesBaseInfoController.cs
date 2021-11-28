@@ -38,6 +38,14 @@ namespace Server.Controllers
             return info;
         }
 
+        [HttpGet]
+        [Route("api/{id}")]
+        public async Task<RecipeBaseInfoDTO> GetByApiId(int id)
+        {
+            var info = await recipesBaseInfoService.GetRecipeBaseInfoByApiIdAsync(id);
+            return info;
+        }
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(object jsonObject)

@@ -20,6 +20,10 @@ export class RecipesBaseInfoService
         return this.http.get<RecipeBaseInfo>(this.url + '/' + id, { withCredentials: true });
     }
 
+    getRecipeBaseInfoByApiId(id: number) {
+        return this.http.get<RecipeBaseInfo>(this.url + '/api/' + id, { withCredentials: true });
+    }
+
     createRecipeBaseInfo(info: RecipeBaseInfo) {
         var body = JSON.stringify(info);
         var headerOptions = new HttpHeaders({'Content-Type':'application/json'});

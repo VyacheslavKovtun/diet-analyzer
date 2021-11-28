@@ -1,0 +1,32 @@
+.input-container {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+  
+.full-width-center {
+    width: 80%;
+}
+
+.recipe-name-field {
+    width: 100%;
+}
+
+#inline-block {
+    margin-right: 1%;
+    display: inline-block;
+}
+
+.cards-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.fav-recipe-card,
+.recipe-card {
+    margin: 2%;
+    max-width: 400px;
+}

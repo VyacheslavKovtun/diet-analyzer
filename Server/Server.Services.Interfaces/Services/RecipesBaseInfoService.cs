@@ -46,6 +46,13 @@ namespace Server.Services.Interfaces.Services
             return mapper.Mapper.Map<RecipeBaseInfoDTO>(info);
         }
 
+        public async Task<RecipeBaseInfoDTO> GetRecipeBaseInfoByApiIdAsync(int id)
+        {
+            var info = await unitOfWork.RecipesBaseInfoRepository.GetByApiIdAsync(id);
+
+            return mapper.Mapper.Map<RecipeBaseInfoDTO>(info);
+        }
+
         public async Task UpdateRecipeBaseInfoAsync(RecipeBaseInfoDTO recipeBaseInfo)
         {
             var info = mapper.Mapper.Map<RecipeBaseInfo>(recipeBaseInfo);

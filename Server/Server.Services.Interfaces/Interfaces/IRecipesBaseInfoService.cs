@@ -11,6 +11,7 @@ namespace Server.Services.Interfaces.Interfaces
         Task CreateNewRecipeBaseInfoAsync(RecipeBaseInfoDTO recipeBaseInfo);
         Task<List<RecipeBaseInfoDTO>> GetAllRecipesBaseInfoAsync();
         Task<RecipeBaseInfoDTO> GetRecipeBaseInfoByIdAsync(int id);
+        Task<RecipeBaseInfoDTO> GetRecipeBaseInfoByApiIdAsync(int id);
         Task UpdateRecipeBaseInfoAsync(RecipeBaseInfoDTO recipeBaseInfo);
         Task DeleteRecipeBaseInfoAsync(int id);
     }

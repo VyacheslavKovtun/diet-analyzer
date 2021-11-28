@@ -13,6 +13,11 @@ namespace Server.Infrastructure.Data.Repository
     {
         public RecipesBaseInfoRepository(ApplicationDbContext ctx) : base(ctx) { }
 
+        public async Task<RecipeBaseInfo> GetByApiIdAsync(int id)
+        {
+            return await table.FirstOrDefaultAsync(i => i.ApiId == id);
+        }
+
         public async override Task<RecipeBaseInfo> GetAsync(int id)
         {
             return await table.FirstOrDefaultAsync(i => i.Id == id);

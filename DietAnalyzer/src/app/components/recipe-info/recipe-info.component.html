@@ -1,0 +1,61 @@
+<div class="top-info">
+    <img style="width: 480px; height: 360px;" src={{recipe.image}} alt="Recipe photo">
+
+    <h1>{{recipe.title}}</h1>
+    <div>
+        <span *ngFor="let type of recipe.dishTypes">{{type}}; </span>
+    </div>
+
+    <div class="top-text">
+        <p>Servings: {{recipe.servings}}</p>
+        <p>Ready in {{recipe.readyInMinutes}} min</p>
+        <p>Likes: {{recipe.aggregateLikes}}</p>
+    </div>
+
+    <h3>Ingredients:</h3>
+</div>
+
+<div class="info-container">
+    <div class="ingredients-container">
+        <div *ngFor="let ingredient of recipe.extendedIngredients" class="ingredient-card">
+            <mat-card-header>
+                <mat-card-title>{{ingredient.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="https://spoonacular.com/cdn/ingredients_100x100/{{ingredient.image}}" alt="Ingredient photo">
+        </div>
+    </div>
+
+    <div *ngFor="let instruction of recipe.analyzedInstructions">
+        <h3>{{instruction.name}}</h3>
+        <div *ngFor="let step of instruction.steps">
+            Step No.{{step.number}}
+            <p>{{step.step}}</p>
+
+            <div class="ingredients-container">
+                <div *ngFor="let ingredient of step.ingredients" class="ingredient-card">
+                    <mat-card-header>
+                        <mat-card-title>{{ingredient.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="https://spoonacular.com/cdn/ingredients_100x100/{{ingredient.image}}" alt="Ingredient photo">
+                </div>
+            </div>
+
+            <div class="equipment-container">
+                <div *ngFor="let equip of step.equipment" class="equipment-card">
+                    <mat-card-header>
+                        <mat-card-title>{{equip.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="https://spoonacular.com/cdn/equipment_100x100/{{equip.image}}" alt="Equipment photo">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="center-container">
+    <div class="button-instrum">
+        <a href={{recipe.sourceUrl}}><button mat-raised-button class="button-control" type="button">FULL RECIPE</button></a>
+    </div><div class="button-instrum">
+        <button mat-button class="button-control" (click)="like()">LIKE</button>
+    </div>
+</div>

@@ -14,6 +14,7 @@
 
 .big-center-title {
     width: 100%;
+    top: 40%;
     text-align: center;
     position: absolute;
     margin-top: 2vh;
@@ -22,30 +23,37 @@
 .big-center-title-text {
     font-family: "URW Chancery L, cursive";
     font-size: 40vh;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.2);
+    color: #ffff;
+    font-weight: bold;
+    /* border: 3px solid #f1f1f1; */
 }
   
 #big-center-title-top-letter {
     position: relative;
     z-index: 2;
-    /* color: #346645; */
+    color: #346645;
 }
   
 .top-picture {
     position: relative;
-    z-index: 1;
+    z-index: -1;
     width: 100%;
     height: 70vh;
-    margin-top: 15vh;
-    margin-bottom: 15vh;
+    margin-top: 0vh;
     text-align: center;
 }
   
 #top-center-image {
-    width: 40%;
-    height: 90vh;
+    border-radius: 50%;
+    height: 100%;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
 }
 
 .top-start-button {
+    margin-top: 7vh;
     text-align: center;
 }
 

@@ -1,0 +1,54 @@
+.top-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.top-text {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    text-align: center;
+}
+
+.info-container {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.ingredients-container,
+.equipment-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ingredient-card,
+.equipment-card {
+    margin: 2%;
+    max-width: 400px;
+}
+
+p {
+    font-size: large;
+}
+
+.center-container {
+    margin-top: 5vh;
+    width: 100%;
+}
+
+.button-instrum {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
+.button-control {
+    width: 35%;
+    height: 6.5vh;
+    border-radius: 20px;
+    color: #ffff;
+    background-color: #346645;
+}

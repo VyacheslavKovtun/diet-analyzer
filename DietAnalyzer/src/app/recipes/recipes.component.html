@@ -1,1 +1,54 @@
-<p>recipes works!</p>
+<div [formGroup]="findRecipeForm" class="input-container">
+    <div class="full-width-center" id="inline-block">
+        <mat-form-field class="recipe-name-field" appearance="outline">
+            <mat-label>Recipe name</mat-label>
+            <input matInput  formControlName="recipeName" placeholder="Past, Soup...">
+        </mat-form-field>
+    </div><div id="inline-block">
+        <button mat-mini-fab color="" (click)="searchClick()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div><div *ngIf="authed" id="inline-block">
+        <button mat-icon-button color="warn" (click)="favouriteRecipesClick()" class="favourite-btn">
+            <mat-icon>favorite</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div class="cards-container">
+    <div *ngFor="let recipe of recipes" class="recipe-card">
+        <mat-card-header>
+            <mat-card-title>{{recipe.title}}</mat-card-title>
+            <!-- <mat-card-subtitle>
+                <span *ngFor="let type of recipe.dishTypes">{{type}}</span>
+            </mat-card-subtitle> -->
+        </mat-card-header>
+        <img mat-card-image style="width: 100%;" src={{recipe.image}} alt="Recipe photo">
+        <mat-card-content>
+          <!-- <p>Servings: {{recipe.servings}}</p>
+          <p>Ready in {{recipe.readyInMinutes}} min</p>
+          <p>Likes: {{recipe.aggregateLikes}}</p> -->
+        </mat-card-content>
+        <mat-card-actions>
+            <!-- <a href={{recipe.sourceUrl}}><button mat-button type="button">FULL RECIPE</button></a> -->
+            <button mat-button [routerLink]="['/info', recipe.id]">INFO</button>
+            <button mat-button (click)="like(recipe)">LIKE</button>
+        </mat-card-actions>
+    </div>
+</div>
+
+<div class="cards-container">
+    <div *ngFor="let recipe of favRecipes" class="fav-recipe-card">
+        <mat-card-header>
+            <mat-card-title>{{recipe.title}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image style="width: 100%;" src={{recipe.imageUrl}} alt="Recipe photo">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+            <!-- <a href={{recipe.sourceUrl}}><button mat-button type="button">FULL RECIPE</button></a> -->
+            <button mat-button [routerLink]="['/info', recipe.apiId]">INFO</button>
+            <button mat-button (click)="deleteFromFavourite(recipe)">DELETE</button>
+        </mat-card-actions>
+    </div>
+</div>

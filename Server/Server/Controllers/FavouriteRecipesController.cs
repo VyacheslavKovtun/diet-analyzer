@@ -46,8 +46,8 @@ namespace Server.Controllers
         {
             var gId = Guid.Parse(id);
 
-            var recipe = await favouriteRecipesService.GetFavouriteRecipesByUserIdAsync(gId);
-            return recipe;
+            var recipes = await favouriteRecipesService.GetFavouriteRecipesByUserIdAsync(gId);
+            return recipes;
         }
 
         [Authorize]

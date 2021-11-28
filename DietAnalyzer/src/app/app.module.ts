@@ -62,6 +62,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiUsersService } from './common/api/services/api.users.service';
+import { RecipesService } from './common/api/services/recipes.service';
+import { FavouriteRecipesService } from './common/api/services/favourite-recipes.service';
+import { RecipesBaseInfoService } from './common/api/services/recipes-base-info.service';
+import { RecipeInfoComponent } from './components/recipe-info/recipe-info.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +79,7 @@ import { ApiUsersService } from './common/api/services/api.users.service';
     ExpensesComponent,
     ShoppingListComponent,
     ErrorComponent,
+    RecipeInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +88,7 @@ import { ApiUsersService } from './common/api/services/api.users.service';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'fridge', component: FridgeComponent },
       { path: 'recipes', component: RecipesComponent },
+      { path: 'info/:recipeId', component: RecipeInfoComponent },
       { path: 'meal-planner', component: MealPlannerComponent },
       { path: 'shopping-list', component: ShoppingListComponent },
       { path: 'expenses', component: ExpensesComponent },
@@ -137,7 +143,7 @@ import { ApiUsersService } from './common/api/services/api.users.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService, ApiUsersService],
+  providers: [AuthService, ApiUsersService, RecipesService, FavouriteRecipesService, RecipesBaseInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

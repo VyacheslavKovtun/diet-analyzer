@@ -11,7 +11,7 @@ namespace Server.Services.Interfaces.Interfaces
         Task CreateNewIngredientStatisticAsync(IngredientStatisticDTO ingredientStatistic);
         Task<List<IngredientStatisticDTO>> GetAllIngredientsStatisticAsync();
         Task<IngredientStatisticDTO> GetIngredientStatisticByIdAsync(int id);
-        Task UpdateIngredientsStatisticAsync(IngredientStatisticDTO ingredientStatistic);
+        Task UpdateIngredientStatisticAsync(IngredientStatisticDTO ingredientStatistic);
         Task DeleteIngredientStatisticAsync(int id);
     }
 }
