@@ -51,6 +51,14 @@ namespace Server.Controllers
         }
 
         [Authorize]
+        [HttpGet("recipe-base-info/{id}")]
+        public async Task<FavouriteRecipeDTO> GetByRecipeBaseInfoId(int id)
+        {
+            var recipe = await favouriteRecipesService.GetFavouriteRecipeByRecipeBaseInfoIdAsync(id);
+            return recipe;
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(object jsonObject)
         {

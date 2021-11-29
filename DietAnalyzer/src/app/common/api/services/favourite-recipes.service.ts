@@ -24,6 +24,10 @@ export class FavouriteRecipesService
         return this.http.get<FavouriteRecipe[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
+    getFavouriteRecipeByRecipeBaseInfoId(id: number) {
+        return this.http.get<FavouriteRecipe>(this.url + '/recipe-base-info/' + id, { withCredentials: true });
+    }
+
     createFavouriteRecipe(recipe: FavouriteRecipe) {
         var body = JSON.stringify(recipe);
         var headerOptions = new HttpHeaders({'Content-Type':'application/json'});

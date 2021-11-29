@@ -53,6 +53,13 @@ namespace Server.Services.Interfaces.Services
             return recipes.FindAll(r => r.UserId == id);
         }
 
+        public async Task<FavouriteRecipeDTO> GetFavouriteRecipeByRecipeBaseInfoIdAsync(int id)
+        {
+            var recipe = await unitOfWork.FavouriteRecipesRepository.GetByRecipeBaseInfoIdAsync(id);
+
+            return mapper.Mapper.Map<FavouriteRecipeDTO>(recipe);
+        }
+
         public async Task UpdateFavouriteRecipeAsync(FavouriteRecipeDTO favouriteRecipe)
         {
             var recipe = mapper.Mapper.Map<FavouriteRecipe>(favouriteRecipe);

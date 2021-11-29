@@ -30,7 +30,6 @@
           <p>Likes: {{recipe.aggregateLikes}}</p> -->
         </mat-card-content>
         <mat-card-actions>
-            <!-- <a href={{recipe.sourceUrl}}><button mat-button type="button">FULL RECIPE</button></a> -->
             <button mat-button [routerLink]="['/info', recipe.id]">INFO</button>
             <button mat-button (click)="like(recipe)">LIKE</button>
         </mat-card-actions>
@@ -46,7 +45,6 @@
         <mat-card-content>
         </mat-card-content>
         <mat-card-actions>
-            <!-- <a href={{recipe.sourceUrl}}><button mat-button type="button">FULL RECIPE</button></a> -->
             <button mat-button [routerLink]="['/info', recipe.apiId]">INFO</button>
             <button mat-button (click)="deleteFromFavourite(recipe)">DELETE</button>
         </mat-card-actions>

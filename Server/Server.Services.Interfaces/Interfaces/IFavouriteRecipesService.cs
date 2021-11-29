@@ -11,6 +11,8 @@ namespace Server.Services.Interfaces.Interfaces
         Task CreateNewFavouriteRecipeAsync(FavouriteRecipeDTO favouriteRecipe);
         Task<List<FavouriteRecipeDTO>> GetAllFavouriteRecipesAsync();
         Task<FavouriteRecipeDTO> GetFavouriteRecipeByIdAsync(int id);
+        Task<List<FavouriteRecipeDTO>> GetFavouriteRecipesByUserIdAsync(Guid id);
+        Task<FavouriteRecipeDTO> GetFavouriteRecipeByRecipeBaseInfoIdAsync(int id);
         Task UpdateFavouriteRecipeAsync(FavouriteRecipeDTO favouriteRecipe);
         Task DeleteFavouriteRecipeAsync(int id);
     }
