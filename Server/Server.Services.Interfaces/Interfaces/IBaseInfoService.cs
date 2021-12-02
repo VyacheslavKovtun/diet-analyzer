@@ -11,6 +11,7 @@ namespace Server.Services.Interfaces.Interfaces
         Task CreateNewBaseInfoAsync(BaseInfoDTO baseInfo);
         Task<List<BaseInfoDTO>> GetAllBaseInfoAsync();
         Task<BaseInfoDTO> GetBaseInfoByIdAsync(int id);
+        Task<BaseInfoDTO> GetByFieldsAsync(BaseInfoDTO baseInfo);
         Task UpdateBaseInfoAsync(BaseInfoDTO baseInfo);
         Task DeleteBaseInfoAsync(int id);
     }

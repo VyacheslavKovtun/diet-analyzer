@@ -20,6 +20,16 @@ export class BaseInfoService
         return this.http.get<BaseInfo>(this.url + '/' + id, { withCredentials: true });
     }
 
+    getBaseInfoByFields(info: BaseInfo) {
+        var body = JSON.stringify(info);
+        var headerOptions = new HttpHeaders({'Content-Type':'application/json'});
+        
+        return this.http.post<BaseInfo>(this.url + '/fields', body, {
+            headers: headerOptions,
+            withCredentials: true
+        });
+    }
+
     createBaseInfo(info: BaseInfo) {
         var body = JSON.stringify(info);
         var headerOptions = new HttpHeaders({'Content-Type':'application/json'});

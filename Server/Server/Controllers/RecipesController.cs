@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Server.Services.Api;
+using Server.Services.Api.Recipes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

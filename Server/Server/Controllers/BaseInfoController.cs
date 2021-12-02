@@ -41,6 +41,15 @@ namespace Server.Controllers
         }
 
         [Authorize]
+        [HttpPost("fields")]    
+        public async Task<BaseInfoDTO> GetByFields(object obj)
+        {
+            var baseInfoDTO = JsonConvert.DeserializeObject<BaseInfoDTO>(obj.ToString());
+            var info = await this.baseInfoService.GetByFieldsAsync(baseInfoDTO);
+            return info;
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(object jsonObject)
         {

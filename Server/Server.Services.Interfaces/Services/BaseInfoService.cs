@@ -46,6 +46,15 @@ namespace Server.Services.Interfaces.Services
             return mapper.Mapper.Map<BaseInfoDTO>(info);
         }
 
+        public async Task<BaseInfoDTO> GetByFieldsAsync(BaseInfoDTO baseInfo)
+        {
+            var info = mapper.Mapper.Map<BaseInfo>(baseInfo);
+            var dbInfo = await unitOfWork.BaseInfoRepository.GetByFieldsAsync(info);
+
+            var infoDTO = mapper.Mapper.Map<BaseInfoDTO>(dbInfo);
+            return infoDTO;
+        }
+
         public async Task UpdateBaseInfoAsync(BaseInfoDTO baseInfo)
         {
             var info = mapper.Mapper.Map<BaseInfo>(baseInfo);

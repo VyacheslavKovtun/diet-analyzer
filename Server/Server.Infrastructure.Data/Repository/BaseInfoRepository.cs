@@ -13,6 +13,13 @@ namespace Server.Infrastructure.Data.Repository
     {
         public BaseInfoRepository(ApplicationDbContext ctx) : base(ctx) { }
 
+        public async Task<BaseInfo> GetByFieldsAsync(BaseInfo info)
+        {
+            return await table.FirstOrDefaultAsync(i => i.Price == info.Price &&
+            i.Amount == info.Amount && i.Unit == info.Unit &&
+            i.MealType == info.MealType && i.ExpirationDate == info.ExpirationDate);
+        }
+
         public async override Task<BaseInfo> GetAsync(int id)
         {
             return await table.FirstOrDefaultAsync(i => i.Id == id);

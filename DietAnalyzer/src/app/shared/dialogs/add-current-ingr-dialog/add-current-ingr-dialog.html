@@ -1,0 +1,32 @@
+<div class="dialog">
+    <h1 mat-dialog-title>Add current ingredients</h1>
+    <div [formGroup]="findIngredientForm" class="input-container">
+        <div class="inline-block">
+            <mat-form-field class="ingredient-name-field" appearance="outline">
+                <mat-label>Ingredient name</mat-label>
+                <input matInput formControlName="ingredientName" placeholder="Apple, Salt...">
+            </mat-form-field>
+        </div><div class="inline-block">
+            <button class="search-btn" mat-mini-fab color="" (click)="searchClick()">
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="cards-container">
+        <div *ngFor="let ingr of ingredients" class="ingredient-card">
+            <mat-card-header>
+                <mat-card-title>{{ingr.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="https://spoonacular.com/cdn/ingredients_100x100/{{ingr.image}}" alt="Ingredient photo">
+            
+            <mat-card-actions>
+                <button mat-button (click)="addIngredient(ingr)">Add</button>
+            </mat-card-actions>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    </div>
+</div>

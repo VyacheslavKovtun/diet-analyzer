@@ -12,6 +12,7 @@ import { EmptyFieldDialog } from '../shared/dialogs/empty-field-dialog/empty-fie
 import { LikeExistsDialog } from '../shared/dialogs/like-exists-dialog/like-exists-dialog';
 import { NoFavouriteRecipesDialog } from '../shared/dialogs/no-fav-recipes-dialog/no-fav-recipes-dialog';
 import { AddedFavRecipeDialog } from '../shared/dialogs/added-fav-recipe-dialog/added-fav-recipe-dialog';
+import { NecessaryAuthDialog } from '../shared/dialogs/necessary-auth-dialog/necessary-auth-dialog';
 
 @Component({
   selector: 'app-recipes',
@@ -33,6 +34,9 @@ export class RecipesComponent implements OnInit {
     private favRecipesService: FavouriteRecipesService, private recipesBaseInfoService: RecipesBaseInfoService, public dialog: MatDialog) {
     this.authService.isUserAuth$.subscribe(res => {
       this.authed = res;
+    });
+    this.authService.getCurrentUser().subscribe(res => {
+      this.currentUserId = res.id;
     });
   }
 
@@ -80,42 +84,47 @@ export class RecipesComponent implements OnInit {
   }
 
   like(lRecipe: Recipe) {
-    if(lRecipe != null) {
-      this.recipesBaseInfoService.getRecipeBaseInfoByApiId(lRecipe.id).subscribe(r => {
-        var dbRecipe = r;
+    if(this.currentUserId != null) {
+      if(lRecipe != null) {
+        this.recipesBaseInfoService.getRecipeBaseInfoByApiId(lRecipe.id).subscribe(r => {
+          var dbRecipe = r;
 
-        if(dbRecipe == null) {
-          this.likedRecipe = {
-            id: 0,
-            apiId: lRecipe.id,
-            title: lRecipe.title,
-            calories: 0,
-            imageUrl: lRecipe.image,
-            imageType: 'jpg'
-          };
-    
-          this.recipesBaseInfoService.createRecipeBaseInfo(this.likedRecipe).subscribe(res => {
-            this.recipesBaseInfoService.getRecipeBaseInfoByApiId(lRecipe.id).subscribe(recipe => {
-              if(recipe.id != null) {
-                this.authService.getCurrentUser().subscribe(res => {
-                  this.currentUserId = res.id;
-    
-                  this.favedRecipe = {
-                    id: 0,
-                    recipeId: recipe.id,
-                    userId: this.currentUserId
-                  };
-                  this.favRecipesService.createFavouriteRecipe(this.favedRecipe).subscribe();
-                  this.dialog.open(AddedFavRecipeDialog);
-                });
-              }
+          if(dbRecipe == null) {
+            this.likedRecipe = {
+              id: 0,
+              apiId: lRecipe.id,
+              title: lRecipe.title,
+              calories: 0,
+              imageUrl: lRecipe.image,
+              imageType: 'jpg'
+            };
+      
+            this.recipesBaseInfoService.createRecipeBaseInfo(this.likedRecipe).subscribe(res => {
+              this.recipesBaseInfoService.getRecipeBaseInfoByApiId(lRecipe.id).subscribe(recipe => {
+                if(recipe.id != null) {
+                  this.authService.getCurrentUser().subscribe(res => {
+                    this.currentUserId = res.id;
+      
+                    this.favedRecipe = {
+                      id: 0,
+                      recipeId: recipe.id,
+                      userId: this.currentUserId
+                    };
+                    this.favRecipesService.createFavouriteRecipe(this.favedRecipe).subscribe();
+                    this.dialog.open(AddedFavRecipeDialog);
+                  });
+                }
+              });
             });
-          });
-        }
-        else {
-          this.dialog.open(LikeExistsDialog);
-        }
-      });
+          }
+          else {
+            this.dialog.open(LikeExistsDialog);
+          }
+        });
+      }
+    }
+    else {
+      this.dialog.open(NecessaryAuthDialog);
     }
   }
 

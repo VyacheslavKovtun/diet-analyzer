@@ -1,0 +1,35 @@
+.page-container {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.inline-blocks {
+    display: inline-flex;
+}
+
+.ingredients-container,
+.products-container {
+    color: #346645;
+    justify-content: center;
+    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.ingredients-container {
+    background-color: #dae7d8;
+    border-radius: 50px;
+}
+
+.cards-container {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ingredient-card {
+    margin: 5%;
+}

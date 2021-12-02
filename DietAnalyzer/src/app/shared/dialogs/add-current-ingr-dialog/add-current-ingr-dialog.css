@@ -1,0 +1,43 @@
+.dialog {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 60vh;
+    max-width: 70vh;
+    max-height: 80vh;
+}
+
+.input-container {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.inline-block {
+    height: 13vh;
+    max-height: 13vh;
+    display: inline-block;
+}
+
+.ingredient-name-field {
+    width: 100%;
+}
+
+.search-btn {
+    margin-left: 5%;
+    height: 8vh;
+    width: 8vh;
+}
+
+.cards-container {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ingredient-card {
+    margin: 5%;
+}

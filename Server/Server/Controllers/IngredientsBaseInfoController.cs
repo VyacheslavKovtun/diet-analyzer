@@ -41,6 +41,14 @@ namespace Server.Controllers
         }
 
         [Authorize]
+        [HttpGet("api/{id}")]
+        public async Task<IngredientBaseInfoDTO> GetByApiId(int id)
+        {
+            var info = await ingredientBaseInfoService.GetIngredientBaseInfoByApiIdAsync(id);
+            return info;
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(object jsonObject)
         {

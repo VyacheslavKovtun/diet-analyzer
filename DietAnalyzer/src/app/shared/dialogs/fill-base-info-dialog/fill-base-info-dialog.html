@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Info</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Amount</mat-label>
+    <input matInput [required]="true" type="number" [(ngModel)]="data.amount">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Unit</mat-label>
+    <input matInput [required]="true" type="text" [(ngModel)]="data.unit">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Expiration date</mat-label>
+    <input matInput [required]="true" [(ngModel)]="data.expDate" [matDatepicker]="exppicker">
+    <mat-datepicker-toggle matSuffix [for]="exppicker"></mat-datepicker-toggle>
+    <mat-datepicker #exppicker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Price</mat-label>
+    <input matInput [required]="true" type="number" [(ngModel)]="data.price">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Purchasing date</mat-label>
+    <input matInput [required]="true" [(ngModel)]="data.purDate" [matDatepicker]="purpicker">
+    <mat-datepicker-toggle matSuffix [for]="purpicker"></mat-datepicker-toggle>
+    <mat-datepicker #purpicker></mat-datepicker>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button mat-button [disabled]="!data.amount || !data.unit || !data.expDate || !data.price || !data.purDate"
+    [mat-dialog-close]="[data.amount, data.unit, data.expDate, data.price, data.purDate]">Ok</button>
+  </div>
+</div>

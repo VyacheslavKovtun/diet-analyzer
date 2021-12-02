@@ -11,6 +11,7 @@ namespace Server.Services.Interfaces.Interfaces
         Task CreateNewIngredientBaseInfoAsync(IngredientBaseInfoDTO ingredientBaseInfo);
         Task<List<IngredientBaseInfoDTO>> GetAllIngredientsBaseInfoAsync();
         Task<IngredientBaseInfoDTO> GetIngredientBaseInfoByIdAsync(int id);
+        Task<IngredientBaseInfoDTO> GetIngredientBaseInfoByApiIdAsync(int id);
         Task UpdateIngredientBaseInfoAsync(IngredientBaseInfoDTO ingredientBaseInfo);
         Task DeleteIngredientBaseInfoAsync(int id);
     }

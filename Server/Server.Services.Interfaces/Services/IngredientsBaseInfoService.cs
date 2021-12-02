@@ -46,6 +46,13 @@ namespace Server.Services.Interfaces.Services
             return mapper.Mapper.Map<IngredientBaseInfoDTO>(info);
         }
 
+        public async Task<IngredientBaseInfoDTO> GetIngredientBaseInfoByApiIdAsync(int id)
+        {
+            var info = await unitOfWork.IngredientsBaseInfoRepository.GetByApiIdAsync(id);
+
+            return mapper.Mapper.Map<IngredientBaseInfoDTO>(info);
+        }
+
         public async Task UpdateIngredientBaseInfoAsync(IngredientBaseInfoDTO ingredientBaseInfo)
         {
             var info = mapper.Mapper.Map<IngredientBaseInfo>(ingredientBaseInfo);

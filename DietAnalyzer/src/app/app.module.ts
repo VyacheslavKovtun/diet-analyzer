@@ -58,7 +58,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiUsersService } from './common/api/services/api.users.service';
@@ -66,6 +66,16 @@ import { RecipesService } from './common/api/services/recipes.service';
 import { FavouriteRecipesService } from './common/api/services/favourite-recipes.service';
 import { RecipesBaseInfoService } from './common/api/services/recipes-base-info.service';
 import { RecipeInfoComponent } from './components/recipe-info/recipe-info.component';
+import { CurrentIngredientsService } from './common/api/services/current-ingredients.service';
+import { CurrentProductsService } from './common/api/services/current-products.service';
+import { IngredientsService } from './common/api/services/ingredients.service';
+import { AddCurrentIngredientDialog } from './shared/dialogs/add-current-ingr-dialog/add-current-ingr-dialog';
+import { IngredientsBaseInfoService } from './common/api/services/ingredients-base-info.service';
+import { FillBaseInfoDialog } from './shared/dialogs/fill-base-info-dialog/fill-base-info-dialog';
+import { BaseInfoService } from './common/api/services/base-info.service';
+import { CaloricInfoService } from './common/api/services/caloric-info.service';
+import { IngredientsStatisticService } from './common/api/services/ingredients-statistic.service';
+import { IngredientsExpensesService } from './common/api/services/ingredients-expenses.service';
 
 @NgModule({
   declarations: [
@@ -80,6 +90,8 @@ import { RecipeInfoComponent } from './components/recipe-info/recipe-info.compon
     ShoppingListComponent,
     ErrorComponent,
     RecipeInfoComponent,
+    AddCurrentIngredientDialog,
+    FillBaseInfoDialog
   ],
   imports: [
     BrowserModule,
@@ -142,8 +154,12 @@ import { RecipeInfoComponent } from './components/recipe-info/recipe-info.compon
     ScrollingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
   ],
-  providers: [AuthService, ApiUsersService, RecipesService, FavouriteRecipesService, RecipesBaseInfoService],
+  providers: [ AuthService, ApiUsersService, RecipesService, FavouriteRecipesService,
+    CurrentIngredientsService, RecipesBaseInfoService, CurrentProductsService, IngredientsService,
+    IngredientsBaseInfoService, BaseInfoService, CaloricInfoService, IngredientsStatisticService, 
+    IngredientsExpensesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

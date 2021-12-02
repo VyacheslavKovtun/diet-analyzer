@@ -1,1 +1,30 @@
-<p>fridge works!</p>
+<div class="page-container">
+    <div class="ingredients-container">
+        <div class="inline-blocks">
+            <button mat-icon-button (click)="addCurIngredients()">
+                <mat-icon>add_circle</mat-icon>
+            </button>
+            <h1>Ingredients: </h1>
+        </div>
+
+        <div class="cards-container">
+            <div *ngFor="let ingr of currentIngredients" class="ingredient-card">
+                <mat-card-header>
+                    <mat-card-title>{{ingr.name}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src="https://spoonacular.com/cdn/ingredients_100x100/{{ingr.imageUrl}}" alt="Ingredient photo">
+                
+                <mat-card-actions>
+                    <button mat-icon-button (click)="deleteIngredient(ingr)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="updateIngredient(ingr)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </div>
+        </div>
+    </div><div class="products-container">
+
+    </div>
+</div>

@@ -18,6 +18,11 @@ namespace Server.Infrastructure.Data.Repository
             return await table.FirstOrDefaultAsync(i => i.Id == id);
         }
 
+        public async Task<IngredientBaseInfo> GetByApiIdAsync(int id)
+        {
+            return await table.FirstOrDefaultAsync(i => i.ApiId == id);
+        }
+
         public async override Task UpdateAsync(IngredientBaseInfo value)
         {
             var info = await GetAsync(value.Id);
