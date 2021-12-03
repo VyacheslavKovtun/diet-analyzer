@@ -20,6 +20,11 @@ export class IngredientsExpensesService
         return this.http.get<IngredientsExpense>(this.url + '/' + id, { withCredentials: true });
     }
 
+    getIngredientsExpenseByIngredientBaseInfoId(infoId: number, curUserId: string) {
+        return this.http.get<IngredientsExpense>(this.url + '/ingr-base-info/' + infoId + '/user/' + curUserId,
+        { withCredentials: true });
+    }
+
     getIngredientsExpensesByUserId(id: string) {
         return this.http.get<IngredientsExpense[]>(this.url + '/user/' + id, { withCredentials: true });
     }

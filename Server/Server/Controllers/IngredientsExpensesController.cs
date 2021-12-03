@@ -28,8 +28,8 @@ namespace Server.Controllers
         [HttpGet]
         public async Task<IEnumerable<IngredientsExpenseDTO>> Get()
         {
-            var expense = await ingredientsExpenseService.GetAllIngredientsExpensesAsync();
-            return expense;
+            var expenses = await ingredientsExpenseService.GetAllIngredientsExpensesAsync();
+            return expenses;
         }
 
         [Authorize]
@@ -46,7 +46,17 @@ namespace Server.Controllers
         {
             var gId = Guid.Parse(id);
 
-            var expense = await ingredientsExpenseService.GetIngredientsExpensesByUserIdAsync(gId);
+            var expenses = await ingredientsExpenseService.GetIngredientsExpensesByUserIdAsync(gId);
+            return expenses;
+        }
+
+        [Authorize]
+        [HttpGet("ingr-base-info/{infoId}/user/{userId}")]
+        public async Task<IngredientsExpenseDTO> GetByIngredientBaseInfoId(int infoId, string userId)
+        {
+            var gId = Guid.Parse(userId);
+
+            var expense = await ingredientsExpenseService.GetIngredientsExpenseByIngredientBaseInfoIdAsync(infoId, gId);
             return expense;
         }
 

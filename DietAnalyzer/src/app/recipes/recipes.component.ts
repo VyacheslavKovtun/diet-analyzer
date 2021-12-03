@@ -130,15 +130,17 @@ export class RecipesComponent implements OnInit {
 
   deleteFromFavourite(favRecipe: RecipeBaseInfo) {
     if(favRecipe != null) {
-      this.favRecipesService.getFavouriteRecipeByRecipeBaseInfoId(favRecipe.id).subscribe(res => {
-        var dbFavRecipe = res;
-        if(dbFavRecipe != null) {
-          this.favRecipesService.deleteFavouriteRecipe(dbFavRecipe.id).subscribe(r => {
-            this.recipesBaseInfoService.deleteRecipeBaseInfo(favRecipe.id).subscribe();
-            this.favRecipes = [];
-            this.favouriteRecipesClick();
-          });
-        }
+      this.authService.getCurrentUser().subscribe(curUser => {
+        this.favRecipesService.getFavouriteRecipeByRecipeBaseInfoId(favRecipe.id, curUser.id).subscribe(res => {
+          var dbFavRecipe = res;
+          if(dbFavRecipe != null) {
+            this.favRecipesService.deleteFavouriteRecipe(dbFavRecipe.id).subscribe(r => {
+              this.recipesBaseInfoService.deleteRecipeBaseInfo(favRecipe.id).subscribe();
+              this.favRecipes = [];
+              this.favouriteRecipesClick();
+            });
+          }
+        });
       });
     }
   }

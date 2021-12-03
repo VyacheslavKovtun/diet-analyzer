@@ -11,6 +11,8 @@ namespace Server.Services.Interfaces.Interfaces
         Task CreateNewCurrentIngredientAsync(CurrentIngredientDTO currentIngredient);
         Task<List<CurrentIngredientDTO>> GetAllCurrentIngredientsAsync();
         Task<CurrentIngredientDTO> GetCurrentIngredientByIdAsync(int id);
+        Task<List<CurrentIngredientDTO>> GetCurrentIngredientsByUserIdAsync(Guid id);
+        Task<CurrentIngredientDTO> GetCurrentIngredientByIngredientBaseInfoIdAsync(int ingrId, Guid userId);
         Task UpdateCurrentIngredientAsync(CurrentIngredientDTO currentIngredient);
         Task DeleteCurrentIngredientAsync(int id);
     }

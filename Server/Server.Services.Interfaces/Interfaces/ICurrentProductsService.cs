@@ -11,6 +11,8 @@ namespace Server.Services.Interfaces.Interfaces
         Task CreateNewCurrentProductAsync(CurrentProductDTO currentProduct);
         Task<List<CurrentProductDTO>> GetAllCurrentProductsAsync();
         Task<CurrentProductDTO> GetCurrentProductByIdAsync(int id);
+        Task<List<CurrentProductDTO>> GetCurrentProductsByUserIdAsync(Guid id);
+        Task<CurrentProductDTO> GetCurrentProductByProductBaseInfoIdAsync(int infoId, Guid userId);
         Task UpdateCurrentProductAsync(CurrentProductDTO currentProduct);
         Task DeleteCurrentProductAsync(int id);
     }

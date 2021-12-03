@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { BaseInfoService } from 'src/app/common/api/services/base-info.service';
 import { CurrentIngredientsService } from 'src/app/common/api/services/current-ingredients.service';
@@ -95,29 +95,29 @@ export class AddCurrentIngredientDialog implements OnInit{
             mealType: r.aisle
           };
 
-          this.baseInfoService.createBaseInfo(this.baseInfo).subscribe();
-
-          this.authService.getCurrentUser().subscribe(user => {
-            this.ingredientsBaseInfoService.getIngredientBaseInfoByApiId(this.addingIngr.id).subscribe(ingrInfo => {
-              this.baseInfoService.getBaseInfoByFields(this.baseInfo).subscribe(bInfo => {
-                this.ingrExpense = {
-                  id: 0,
-                  ingredientId: ingrInfo.id,
-                  userId: user.id,
-                  baseInfoId: bInfo.id,
-                  purchasingDate: this.purDate,
-                  isExpired: false
-                };
-
-                this.ingrExpensesService.createIngredientsExpense(this.ingrExpense).subscribe();
-
-                this.currentIngredient = {
-                  id: 0,
-                  ingredientId: ingrInfo.id,
-                  userId: user.id,
-                  baseInfoId: bInfo.id
-                };
-                this.currentIngredientsService.createCurrentIngredient(this.currentIngredient).subscribe();
+          this.baseInfoService.createBaseInfo(this.baseInfo).subscribe(crRes => {
+            this.authService.getCurrentUser().subscribe(user => {
+              this.ingredientsBaseInfoService.getIngredientBaseInfoByApiId(this.addingIngr.id).subscribe(ingrInfo => {
+                this.baseInfoService.getBaseInfoByFields(this.baseInfo).subscribe(bInfo => {
+                  this.ingrExpense = {
+                    id: 0,
+                    ingredientId: ingrInfo.id,
+                    userId: user.id,
+                    baseInfoId: bInfo.id,
+                    purchasingDate: this.purDate,
+                    isExpired: false
+                  };
+  
+                  this.ingrExpensesService.createIngredientsExpense(this.ingrExpense).subscribe();
+  
+                  this.currentIngredient = {
+                    id: 0,
+                    ingredientId: ingrInfo.id,
+                    userId: user.id,
+                    baseInfoId: bInfo.id
+                  };
+                  this.currentIngredientsService.createCurrentIngredient(this.currentIngredient).subscribe();
+                });
               });
             });
           });

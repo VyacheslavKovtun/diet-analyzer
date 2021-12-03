@@ -53,6 +53,13 @@ namespace Server.Services.Interfaces.Services
             return exp.FindAll(e => e.UserId == id);
         }
 
+        public async Task<IngredientsExpenseDTO> GetIngredientsExpenseByIngredientBaseInfoIdAsync(int infoId, Guid userId)
+        {
+            var exp = await GetAllIngredientsExpensesAsync();
+
+            return exp.Find(e => e.IngredientId == infoId && e.UserId == userId);
+        }
+
         public async Task UpdateIngredientsExpenseAsync(IngredientsExpenseDTO ingredientsExpense)
         {
             var exp = mapper.Mapper.Map<IngredientsExpense>(ingredientsExpense);

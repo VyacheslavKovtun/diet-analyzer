@@ -53,9 +53,9 @@ namespace Server.Services.Interfaces.Services
             return recipes.FindAll(r => r.UserId == id);
         }
 
-        public async Task<FavouriteRecipeDTO> GetFavouriteRecipeByRecipeBaseInfoIdAsync(int id)
+        public async Task<FavouriteRecipeDTO> GetFavouriteRecipeByRecipeBaseInfoIdAsync(int recipeId, Guid userId)
         {
-            var recipe = await unitOfWork.FavouriteRecipesRepository.GetByRecipeBaseInfoIdAsync(id);
+            var recipe = await unitOfWork.FavouriteRecipesRepository.GetByRecipeBaseInfoIdAsync(recipeId, userId);
 
             return mapper.Mapper.Map<FavouriteRecipeDTO>(recipe);
         }

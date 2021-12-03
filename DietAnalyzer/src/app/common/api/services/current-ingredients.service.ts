@@ -20,6 +20,11 @@ export class CurrentIngredientsService
         return this.http.get<CurrentIngredient>(this.url + '/' + id, { withCredentials: true });
     }
 
+    getCurrentIngredientByIngredientBaseInfoId(infoId: number, userId: string) {
+        return this.http.get<CurrentIngredient>(this.url + '/ingr-base-info/' + infoId + '/user/' + userId,
+        { withCredentials: true });
+    }
+
     getCurrentIngredientsByUserId(id: string) {
         return this.http.get<CurrentIngredient[]>(this.url + '/user/' + id, { withCredentials: true });
     }

@@ -15,6 +15,9 @@
                 <img mat-card-image src="https://spoonacular.com/cdn/ingredients_100x100/{{ingr.imageUrl}}" alt="Ingredient photo">
                 
                 <mat-card-actions>
+                    <button mat-icon-button (click)="eatIngredient(ingr)">
+                        <mat-icon>done</mat-icon>
+                    </button>
                     <button mat-icon-button (click)="deleteIngredient(ingr)">
                         <mat-icon>delete</mat-icon>
                     </button>
@@ -25,6 +28,32 @@
             </div>
         </div>
     </div><div class="products-container">
+        <div class="inline-blocks">
+            <button mat-icon-button (click)="addCurProducts()">
+                <mat-icon>add_circle</mat-icon>
+            </button>
+            <h1>Products: </h1>
+        </div>
 
+        <div class="cards-container">
+            <div *ngFor="let prod of currentProducts" class="product-card">
+                <mat-card-header>
+                    <mat-card-title>{{prod.title}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src={{prod.imageUrl}} alt="Product photo">
+                
+                <mat-card-actions>
+                    <button mat-icon-button (click)="eatProduct(prod)">
+                        <mat-icon>done</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="deleteProduct(prod)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="updateProduct(prod)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </div>
+        </div>
     </div>
 </div>

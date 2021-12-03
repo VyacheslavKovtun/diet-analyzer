@@ -51,10 +51,12 @@ namespace Server.Controllers
         }
 
         [Authorize]
-        [HttpGet("recipe-base-info/{id}")]
-        public async Task<FavouriteRecipeDTO> GetByRecipeBaseInfoId(int id)
+        [HttpGet("recipe-base-info/{rId}/user/{uId}")]
+        public async Task<FavouriteRecipeDTO> GetByRecipeBaseInfoId(int rId, string uId)
         {
-            var recipe = await favouriteRecipesService.GetFavouriteRecipeByRecipeBaseInfoIdAsync(id);
+            var gId = Guid.Parse(uId);
+
+            var recipe = await favouriteRecipesService.GetFavouriteRecipeByRecipeBaseInfoIdAsync(rId, gId);
             return recipe;
         }
 

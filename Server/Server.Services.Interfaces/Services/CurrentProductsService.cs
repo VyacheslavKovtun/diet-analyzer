@@ -53,6 +53,14 @@ namespace Server.Services.Interfaces.Services
             return prods.FindAll(p => p.UserId == id);
         }
 
+        public async Task<CurrentProductDTO> GetCurrentProductByProductBaseInfoIdAsync(int infoId, Guid userId)
+        {
+            var prods = await GetAllCurrentProductsAsync();
+
+            return prods.Find(p => p.ProductId == infoId && p.UserId == userId);
+        }
+
+
         public async Task UpdateCurrentProductAsync(CurrentProductDTO currentProduct)
         {
             var prod = mapper.Mapper.Map<CurrentProduct>(currentProduct);

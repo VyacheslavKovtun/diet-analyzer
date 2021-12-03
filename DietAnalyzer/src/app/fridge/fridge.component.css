@@ -1,6 +1,8 @@
 .page-container {
     max-width: 80%;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .inline-blocks {
@@ -11,7 +13,6 @@
 .products-container {
     color: #346645;
     justify-content: center;
-    display: inline-block;
     display: flex;
     flex-wrap: wrap;
     width: 50%;
@@ -30,6 +31,8 @@
     flex-wrap: wrap;
 }
 
-.ingredient-card {
+.ingredient-card,
+.product-card {
+    width: 20%;
     margin: 5%;
 }

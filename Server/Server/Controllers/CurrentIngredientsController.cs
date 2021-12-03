@@ -28,8 +28,8 @@ namespace Server.Controllers
         [HttpGet]
         public async Task<IEnumerable<CurrentIngredientDTO>> Get()
         {
-            var ingredient = await currentIngredientsService.GetAllCurrentIngredientsAsync();
-            return ingredient;
+            var ingredients = await currentIngredientsService.GetAllCurrentIngredientsAsync();
+            return ingredients;
         }
 
         [Authorize]
@@ -46,7 +46,17 @@ namespace Server.Controllers
         {
             var gId = Guid.Parse(id);
 
-            var ingredient = await currentIngredientsService.GetCurrentIngredientsByUserIdAsync(gId);
+            var ingredients = await currentIngredientsService.GetCurrentIngredientsByUserIdAsync(gId);
+            return ingredients;
+        }
+
+        [Authorize]
+        [HttpGet("ingr-base-info/{infoId}/user/{userId}")]
+        public async Task<CurrentIngredientDTO> GetByIngredientBaseInfoId(int infoId, string userId)
+        {
+            var gId = Guid.Parse(userId);
+
+            var ingredient = await currentIngredientsService.GetCurrentIngredientByIngredientBaseInfoIdAsync(infoId, gId);
             return ingredient;
         }
 

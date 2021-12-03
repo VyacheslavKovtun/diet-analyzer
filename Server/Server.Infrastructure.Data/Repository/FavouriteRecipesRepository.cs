@@ -18,9 +18,9 @@ namespace Server.Infrastructure.Data.Repository
             return await table.FirstOrDefaultAsync(r => r.Id == id);
         }
 
-        public async Task<FavouriteRecipe> GetByRecipeBaseInfoIdAsync(int id)
+        public async Task<FavouriteRecipe> GetByRecipeBaseInfoIdAsync(int recipeId, Guid userId)
         {
-            return await table.FirstOrDefaultAsync(r => r.RecipeId == id);
+            return await table.FirstOrDefaultAsync(r => r.RecipeId == recipeId && r.UserId == userId);
         }
 
         public async override Task UpdateAsync(FavouriteRecipe value)

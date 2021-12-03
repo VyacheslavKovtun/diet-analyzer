@@ -24,8 +24,8 @@ export class FavouriteRecipesService
         return this.http.get<FavouriteRecipe[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
-    getFavouriteRecipeByRecipeBaseInfoId(id: number) {
-        return this.http.get<FavouriteRecipe>(this.url + '/recipe-base-info/' + id, { withCredentials: true });
+    getFavouriteRecipeByRecipeBaseInfoId(infoId: number, curUserId: string) {
+        return this.http.get<FavouriteRecipe>(this.url + '/recipe-base-info/' + infoId + '/user/' + curUserId, { withCredentials: true });
     }
 
     createFavouriteRecipe(recipe: FavouriteRecipe) {

@@ -12,7 +12,7 @@ namespace Server.Services.Interfaces.Interfaces
         Task<List<FavouriteRecipeDTO>> GetAllFavouriteRecipesAsync();
         Task<FavouriteRecipeDTO> GetFavouriteRecipeByIdAsync(int id);
         Task<List<FavouriteRecipeDTO>> GetFavouriteRecipesByUserIdAsync(Guid id);
-        Task<FavouriteRecipeDTO> GetFavouriteRecipeByRecipeBaseInfoIdAsync(int id);
+        Task<FavouriteRecipeDTO> GetFavouriteRecipeByRecipeBaseInfoIdAsync(int recipeId, Guid userId);
         Task UpdateFavouriteRecipeAsync(FavouriteRecipeDTO favouriteRecipe);
         Task DeleteFavouriteRecipeAsync(int id);
     }
