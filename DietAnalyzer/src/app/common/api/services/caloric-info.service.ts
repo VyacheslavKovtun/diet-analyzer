@@ -20,6 +20,16 @@ export class CaloricInfoService
         return this.http.get<CaloricInfo>(this.url + '/' + id, { withCredentials: true });
     }
 
+    getCaloricInfoByFields(caloricInfo: CaloricInfo) {
+        var body = JSON.stringify(caloricInfo);
+        var headerOptions = new HttpHeaders({'Content-Type':'application/json'});
+        
+        return this.http.post<CaloricInfo>(this.url + '/fields', body, {
+            headers: headerOptions,
+            withCredentials: true
+        });
+    }
+
     createCaloricInfo(info: CaloricInfo) {
         var body = JSON.stringify(info);
         var headerOptions = new HttpHeaders({'Content-Type':'application/json'});

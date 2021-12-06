@@ -11,6 +11,7 @@ namespace Server.Services.Interfaces.Interfaces
         Task CreateNewProductBaseInfoAsync(ProductBaseInfoDTO productBaseInfo);
         Task<List<ProductBaseInfoDTO>> GetAllProductsBaseInfoAsync();
         Task<ProductBaseInfoDTO> GetProductBaseInfoByIdAsync(int id);
+        Task<ProductBaseInfoDTO> GetProductBaseInfoByApiIdAsync(int apiId);
         Task UpdateProductBaseInfoAsync(ProductBaseInfoDTO productBaseInfo);
         Task DeleteProductBaseInfoAsync(int id);
     }

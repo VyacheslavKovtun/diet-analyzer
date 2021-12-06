@@ -18,6 +18,11 @@ namespace Server.Infrastructure.Data.Repository
             return await table.FirstOrDefaultAsync(s => s.Id == id);
         }
 
+        public async Task<ProductStatistic> GetByBaseInfoIdAsync(int id)
+        {
+            return await table.FirstOrDefaultAsync(s => s.ProductId == id);
+        }
+
         public async override Task UpdateAsync(ProductStatistic value)
         {
             var stat = await GetAsync(value.Id);

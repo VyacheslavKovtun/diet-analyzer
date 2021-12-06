@@ -45,6 +45,15 @@ namespace Server.Services.Interfaces.Services
 
             return mapper.Mapper.Map<CaloricInfoDTO>(info);
         }
+        
+        public async Task<CaloricInfoDTO> GetCaloricInfoByFieldsAsync(CaloricInfoDTO caloricInfo)
+        {
+            var info = mapper.Mapper.Map<CaloricInfo>(caloricInfo);
+            var dbInfo = await unitOfWork.CaloricInfoRepository.GetByFieldsAsync(info);
+
+            var infoDTO = mapper.Mapper.Map<CaloricInfoDTO>(dbInfo);
+            return infoDTO;
+        }
 
         public async Task UpdateCaloricInfoAsync(CaloricInfoDTO caloricInfo)
         {

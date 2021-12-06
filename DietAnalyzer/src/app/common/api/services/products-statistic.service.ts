@@ -20,6 +20,10 @@ export class ProductsStatisticService
         return this.http.get<ProductStatistic>(this.url + '/' + id, { withCredentials: true });
     }
 
+    getProductStatisticByProductBaseInfoId(id: number) {
+        return this.http.get<ProductStatistic>(this.url + '/prod-base-info/' + id, { withCredentials: true });
+    }
+
     createProductStatistic(statistic: ProductStatistic) {
         var body = JSON.stringify(statistic);
         var headerOptions = new HttpHeaders({'Content-Type':'application/json'});

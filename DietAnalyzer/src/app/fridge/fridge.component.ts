@@ -2,17 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../auth/services/auth.service';
 import { BaseInfoService } from '../common/api/services/base-info.service';
+import { CaloricInfoService } from '../common/api/services/caloric-info.service';
 import { CurrentIngredientsService } from '../common/api/services/current-ingredients.service';
 import { CurrentProductsService } from '../common/api/services/current-products.service';
 import { IngredientsBaseInfoService } from '../common/api/services/ingredients-base-info.service';
 import { IngredientsExpensesService } from '../common/api/services/ingredients-expenses.service';
+import { ProductsBaseInfoService } from '../common/api/services/products-base-info.service';
+import { ProductsExpensesService } from '../common/api/services/products-expenses.service';
+import { ProductsStatisticService } from '../common/api/services/products-statistic.service';
 import { BaseInfo } from '../common/interfaces/base-info.interface';
 import { CurrentIngredient } from '../common/interfaces/current-ingredient.interface';
 import { CurrentProduct } from '../common/interfaces/current-product.interface';
 import { IngredientBaseInfo } from '../common/interfaces/ingredient-base-info.interface';
 import { IngredientsExpense } from '../common/interfaces/ingredients-expense.interface';
 import { ProductBaseInfo } from '../common/interfaces/product-base-info.interface';
+import { ProductsExpense } from '../common/interfaces/products-expense.interface';
 import { AddCurrentIngredientDialog } from '../shared/dialogs/add-current-ingr-dialog/add-current-ingr-dialog';
+import { AddCurrentProductDialog } from '../shared/dialogs/add-current-product-dialog/add-current-product-dialog';
 import { FillBaseInfoDialog } from '../shared/dialogs/fill-base-info-dialog/fill-base-info-dialog';
 
 @Component({
@@ -26,7 +32,8 @@ export class FridgeComponent implements OnInit {
 
   baseInfo !: BaseInfo;
   ingrExpense !: IngredientsExpense;
-  ingrIsExpired !: boolean;
+  isExpired !: boolean;
+  prodExpense !: ProductsExpense;
 
   currentIngredients : IngredientBaseInfo[] = [];
   currentProducts : ProductBaseInfo[] = [];
@@ -35,7 +42,9 @@ export class FridgeComponent implements OnInit {
 
   constructor(private currentIngredientsService: CurrentIngredientsService, private currentProductsService: CurrentProductsService,
     private authService: AuthService, public dialog: MatDialog, private ingredientsBaseInfoService: IngredientsBaseInfoService,
-    private ingredientsExpensesService: IngredientsExpensesService, private baseInfoService: BaseInfoService) {
+    private ingredientsExpensesService: IngredientsExpensesService, private baseInfoService: BaseInfoService,
+    private productsBaseInfoService: ProductsBaseInfoService, private productsExpensesService: ProductsExpensesService,
+    private productsStatisticService: ProductsStatisticService, private caloricInfoService: CaloricInfoService) {
     this.loadIngredients();
     this.loadProducts();
   }
@@ -133,10 +142,10 @@ export class FridgeComponent implements OnInit {
 
                 this.baseInfoService.updateBaseInfo(this.baseInfo).subscribe(updBI => {
                   if(Date.parse(res[2]) >= Date.now()) {
-                    this.ingrIsExpired = false;
+                    this.isExpired = false;
                   }
                   else {
-                    this.ingrIsExpired = true;
+                    this.isExpired = true;
                   }
   
                   this.ingrExpense = {
@@ -145,7 +154,7 @@ export class FridgeComponent implements OnInit {
                     ingredientId: ingr.id,
                     userId: curUser.id,
                     baseInfoId: baseInfo.id,
-                    isExpired: this.ingrIsExpired
+                    isExpired: this.isExpired
                   };
 
                   this.ingredientsExpensesService.updateIngredientsExpense(this.ingrExpense).subscribe();
@@ -159,30 +168,125 @@ export class FridgeComponent implements OnInit {
   }
 
   addCurProducts() {
-    
+    const dialogRef = this.dialog.open(AddCurrentProductDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.loadProducts();
+    });
   }
 
   loadProducts() {
     this.authService.getCurrentUser().subscribe(res => {
+      this.currentProducts = [];
       this.currentUserId = res.id;
 
       if(this.currentUserId != null) {
-        this.currentProductsService.getCurrentProductsByUserId(this.currentUserId).subscribe(prods => {
-          this.curP = prods;
+        this.currentProductsService.getCurrentProductsByUserId(this.currentUserId).subscribe(prod => {
+          this.curP = prod;
+
+          this.curP.forEach(product => {
+            this.productsBaseInfoService.getProductBaseInfoById(product.productId).subscribe(prodBaseInfo => {
+              this.currentProducts.push(prodBaseInfo);
+            });
+          })
         });
       }
     });
   }
 
   eatProduct(prod: ProductBaseInfo) {
-
+    if(prod != null) {
+      this.authService.getCurrentUser().subscribe(curUser => {
+        this.currentProductsService.getCurrentProductByProductBaseInfoId(prod.id, curUser.id).subscribe(curProd => {
+          this.currentProductsService.deleteCurrentProduct(curProd.id).subscribe(dCurProd => {
+            this.loadProducts();
+          });
+        });
+      });
+    }
   }
 
   deleteProduct(prod: ProductBaseInfo) {
+    if(prod != null) {
+      this.authService.getCurrentUser().subscribe(curUser => {
+        this.currentProductsService.getCurrentProductByProductBaseInfoId(prod.id, curUser.id).subscribe(curProd => {
+          this.currentProductsService.deleteCurrentProduct(curProd.id).subscribe(delCurProdRes => {
+            
+            this.productsExpensesService.getProductsExpenseByProductBaseInfoId(prod.id, curUser.id).subscribe(prodExp => {
+              this.productsExpensesService.deleteProductsExpense(prodExp.id).subscribe(delProdExp => {
 
+                this.productsStatisticService.getProductStatisticByProductBaseInfoId(prod.id).subscribe(prodStat => {
+                  this.productsStatisticService.deleteProductStatistic(prodStat.id).subscribe(delProdStat => {
+
+                    this.caloricInfoService.deleteCaloricInfo(prodStat.caloricInfoId).subscribe(delCalInfo => {
+                      
+                      this.productsBaseInfoService.getProductBaseInfoById(curProd.productId).subscribe(prodBInfo => {
+                        this.productsBaseInfoService.deleteProductBaseInfo(prodBInfo.id).subscribe(delProdBInfo => {
+      
+                          this.baseInfoService.getBaseInfoById(curProd.baseInfoId).subscribe(bInfo => {
+                            this.baseInfoService.deleteBaseInfo(bInfo.id).subscribe(dBInfo => {
+                              this.loadProducts();
+                            });
+                          })
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    }
   }
 
   updateProduct(prod: ProductBaseInfo) {
+    if(prod != null) {
+      this.authService.getCurrentUser().subscribe(curUser => {
+        this.currentProductsService.getCurrentProductByProductBaseInfoId(prod.id, curUser.id).subscribe(curProd => {
+          this.baseInfoService.getBaseInfoById(curProd.baseInfoId).subscribe(baseInfo => {
+            this.productsExpensesService.getProductsExpenseByProductBaseInfoId(prod.id, curUser.id).subscribe(prodExp => {
+              const dialRef = this.dialog.open(FillBaseInfoDialog, {
+                width: '350px',
+                data: {amount: baseInfo.amount, unit: baseInfo.unit, expDate: baseInfo.expirationDate,
+                  price: baseInfo.price, purDate: prodExp.purchasingDate}
+              });
 
+              dialRef.afterClosed().subscribe(res => {
+                this.baseInfo = {
+                  id: curProd.baseInfoId,
+                  amount: res[0],
+                  unit: res[1],
+                  expirationDate: res[2],
+                  price: res[3],
+                  mealType: baseInfo.mealType
+                };
+
+                this.baseInfoService.updateBaseInfo(this.baseInfo).subscribe(updBI => {
+                  if(Date.parse(res[2]) >= Date.now()) {
+                    this.isExpired = false;
+                  }
+                  else {
+                    this.isExpired = true;
+                  }
+  
+                  this.prodExpense = {
+                    id: prodExp.id,
+                    purchasingDate: res[4],
+                    productId: prod.id,
+                    userId: curUser.id,
+                    baseInfoId: baseInfo.id,
+                    isExpired: this.isExpired
+                  };
+
+                  this.productsExpensesService.updateProductsExpense(this.prodExpense).subscribe();
+                });
+              });
+            });
+          });
+        });
+      });      
+    }
   }
 }

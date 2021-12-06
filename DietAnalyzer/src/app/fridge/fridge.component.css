@@ -36,3 +36,8 @@
     width: 20%;
     margin: 5%;
 }
+
+.card-title {
+    margin-top: 0;
+    font-size: smaller;
+}

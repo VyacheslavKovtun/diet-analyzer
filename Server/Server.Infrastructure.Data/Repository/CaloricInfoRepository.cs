@@ -13,6 +13,12 @@ namespace Server.Infrastructure.Data.Repository
     {
         public CaloricInfoRepository(ApplicationDbContext ctx) : base(ctx) { }
 
+        public async Task<CaloricInfo> GetByFieldsAsync(CaloricInfo info)
+        {
+            return await table.FirstOrDefaultAsync(i => i.Calories == info.Calories &&
+            i.Protein == info.Protein && i.Fat == info.Fat);
+        }
+
         public async override Task<CaloricInfo> GetAsync(int id)
         {
             return await table.FirstOrDefaultAsync(c => c.Id == id);

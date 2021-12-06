@@ -20,6 +20,10 @@ export class ProductsBaseInfoService
         return this.http.get<ProductBaseInfo>(this.url + '/' + id, { withCredentials: true });
     }
 
+    getProductBaseInfoByApiId(id: number) {
+        return this.http.get<ProductBaseInfo>(this.url + '/api/' + id, { withCredentials: true });
+    }
+
     createProductBaseInfo(info: ProductBaseInfo) {
         var body = JSON.stringify(info);
         var headerOptions = new HttpHeaders({'Content-Type':'application/json'});

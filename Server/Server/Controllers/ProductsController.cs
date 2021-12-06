@@ -25,7 +25,7 @@ namespace Server.Controllers
         }
 
         [HttpGet]
-        [Route("search/name/{name}")]
+        [Route("search/title/{title}")]
         public IEnumerable<Product> GetByTitle(string title)
         {
             url = "https://api.spoonacular.com/food/products/search" + "?apiKey=" + API_KEY + "&query=" + title;
@@ -40,8 +40,9 @@ namespace Server.Controllers
         public ProductRoot GetById(int id)
         {
             url = "https://api.spoonacular.com/food/products/" + id + "?apiKey=" + API_KEY;
+            var json = JsonConvert.DeserializeObject(client.GetStringAsync(url).Result).ToString();
 
-            ProductRoot root = JsonConvert.DeserializeObject<ProductRoot>(client.GetStringAsync(url).Result);
+            ProductRoot root = JsonConvert.DeserializeObject<ProductRoot>(json);
             return root;
         }
     }

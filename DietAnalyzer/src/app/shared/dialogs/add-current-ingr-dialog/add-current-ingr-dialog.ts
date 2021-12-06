@@ -105,7 +105,7 @@ export class AddCurrentIngredientDialog implements OnInit{
                     userId: user.id,
                     baseInfoId: bInfo.id,
                     purchasingDate: this.purDate,
-                    isExpired: false
+                    isExpired: this.isExpired
                   };
   
                   this.ingrExpensesService.createIngredientsExpense(this.ingrExpense).subscribe();

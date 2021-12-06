@@ -37,8 +37,8 @@
 
         <div class="cards-container">
             <div *ngFor="let prod of currentProducts" class="product-card">
-                <mat-card-header>
-                    <mat-card-title>{{prod.title}}</mat-card-title>
+                <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">{{prod.title}}</mat-card-title>
                 </mat-card-header>
                 <img mat-card-image src={{prod.imageUrl}} alt="Product photo">
                 

@@ -16,7 +16,7 @@ namespace Server.Services.Api.Products
     public class Nutrient
     {
         public string name { get; set; }
-        public int amount { get; set; }
+        public double amount { get; set; }
         public string unit { get; set; }
         public double percentOfDailyNeeds { get; set; }
     }
@@ -24,7 +24,7 @@ namespace Server.Services.Api.Products
     public class CaloricBreakdown
     {
         public double percentProtein { get; set; }
-        public int percentFat { get; set; }
+        public double percentFat { get; set; }
         public double percentCarbs { get; set; }
     }
 
@@ -36,8 +36,8 @@ namespace Server.Services.Api.Products
 
     public class Servings
     {
-        public int number { get; set; }
-        public int size { get; set; }
+        public double number { get; set; }
+        public double? size { get; set; }
         public string unit { get; set; }
     }
 
@@ -58,6 +58,6 @@ namespace Server.Services.Api.Products
         public Nutrition nutrition { get; set; }
         public double price { get; set; }
         public Servings servings { get; set; }
-        public double spoonacularScore { get; set; }
+        public double? spoonacularScore { get; set; }
     }
 }

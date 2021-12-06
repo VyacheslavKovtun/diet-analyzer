@@ -20,6 +20,11 @@ export class CurrentProductsService
         return this.http.get<CurrentProduct>(this.url + '/' + id, { withCredentials: true });
     }
 
+    getCurrentProductByProductBaseInfoId(infoId: number, userId: string) {
+        return this.http.get<CurrentProduct>(this.url + '/prod-base-info/' + infoId + '/user/' + userId,
+        { withCredentials: true });
+    }
+
     getCurrentProductsByUserId(id: string) {
         return this.http.get<CurrentProduct[]>(this.url + '/user/' + id, { withCredentials: true });
     }

@@ -46,6 +46,13 @@ namespace Server.Services.Interfaces.Services
             return mapper.Mapper.Map<ProductStatisticDTO>(stat);
         }
 
+        public async Task<ProductStatisticDTO> GetProductStatisticByProductBaseInfoIdAsync(int id)
+        {
+            var stat = await unitOfWork.ProductsStatisticRepository.GetByBaseInfoIdAsync(id);
+
+            return mapper.Mapper.Map<ProductStatisticDTO>(stat);
+        }
+
         public async Task UpdateProductStatisticAsync(ProductStatisticDTO productStatistic)
         {
             var stat = mapper.Mapper.Map<ProductStatistic>(productStatistic);

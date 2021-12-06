@@ -24,6 +24,11 @@ export class ProductsExpensesService
         return this.http.get<ProductsExpense[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
+    getProductsExpenseByProductBaseInfoId(infoId: number, curUserId: string) {
+        return this.http.get<ProductsExpense>(this.url + '/prod-base-info/' + infoId + '/user/' + curUserId,
+        { withCredentials: true });
+    }
+
     createProductsExpense(expense: ProductsExpense) {
         var body = JSON.stringify(expense);
         var headerOptions = new HttpHeaders({'Content-Type':'application/json'});

@@ -51,6 +51,16 @@ namespace Server.Controllers
         }
 
         [Authorize]
+        [HttpGet("prod-base-info/{infoId}/user/{userId}")]
+        public async Task<ProductsExpenseDTO> GetByProductBaseInfoId(int infoId, string userId)
+        {
+            var gId = Guid.Parse(userId);
+
+            var expense = await productsExpensesService.GetProductsExpenseByProductBaseInfoIdAsync(infoId, gId);
+            return expense;
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(object jsonObject)
         {

@@ -41,6 +41,15 @@ namespace Server.Controllers
         }
 
         [Authorize]
+        [HttpPost("fields")]
+        public async Task<CaloricInfoDTO> GetByFields(object obj)
+        {
+            var caloricInfoDTO = JsonConvert.DeserializeObject<CaloricInfoDTO>(obj.ToString());
+            var info = await this.caloricInfoService.GetCaloricInfoByFieldsAsync(caloricInfoDTO);
+            return info;
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(object jsonObject)
         {

@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { IngredientInfo } from "../../interfaces/ingredient-info.interface";
 import { ShortIngredient } from "../../interfaces/short-ingredient.interface";

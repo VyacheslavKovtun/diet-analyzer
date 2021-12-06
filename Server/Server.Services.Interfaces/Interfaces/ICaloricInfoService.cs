@@ -11,6 +11,7 @@ namespace Server.Services.Interfaces.Interfaces
         Task CreateNewCaloricInfoAsync(CaloricInfoDTO caloricInfo);
         Task<List<CaloricInfoDTO>> GetAllCaloricInfoAsync();
         Task<CaloricInfoDTO> GetCaloricInfoByIdAsync(int id);
+        Task<CaloricInfoDTO> GetCaloricInfoByFieldsAsync(CaloricInfoDTO caloricInfo);
         Task UpdateCaloricInfoAsync(CaloricInfoDTO caloricInfo);
         Task DeleteCaloricInfoAsync(int id);
     }

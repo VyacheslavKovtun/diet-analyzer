@@ -76,6 +76,11 @@ import { BaseInfoService } from './common/api/services/base-info.service';
 import { CaloricInfoService } from './common/api/services/caloric-info.service';
 import { IngredientsStatisticService } from './common/api/services/ingredients-statistic.service';
 import { IngredientsExpensesService } from './common/api/services/ingredients-expenses.service';
+import { ProductsService } from './common/api/services/products.service';
+import { ProductsExpensesService } from './common/api/services/products-expenses.service';
+import { ProductsBaseInfoService } from './common/api/services/products-base-info.service';
+import { ProductsStatisticService } from './common/api/services/products-statistic.service';
+import { AddCurrentProductDialog } from './shared/dialogs/add-current-product-dialog/add-current-product-dialog';
 
 @NgModule({
   declarations: [
@@ -91,7 +96,8 @@ import { IngredientsExpensesService } from './common/api/services/ingredients-ex
     ErrorComponent,
     RecipeInfoComponent,
     AddCurrentIngredientDialog,
-    FillBaseInfoDialog
+    FillBaseInfoDialog,
+    AddCurrentProductDialog,
   ],
   imports: [
     BrowserModule,
@@ -159,7 +165,7 @@ import { IngredientsExpensesService } from './common/api/services/ingredients-ex
   providers: [ AuthService, ApiUsersService, RecipesService, FavouriteRecipesService,
     CurrentIngredientsService, RecipesBaseInfoService, CurrentProductsService, IngredientsService,
     IngredientsBaseInfoService, BaseInfoService, CaloricInfoService, IngredientsStatisticService, 
-    IngredientsExpensesService],
+    IngredientsExpensesService, ProductsService, ProductsExpensesService, ProductsBaseInfoService, ProductsStatisticService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
