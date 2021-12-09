@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Info</h1>
+<div mat-dialog-content>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Slot</mat-label>
+    <input type="number"
+           placeholder="Pick one"
+           aria-label="Number"
+           matInput
+           [formControl]="myControl"
+           [matAutocomplete]="auto" [required]="true" [(ngModel)]="data.slot">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Position</mat-label>
+    <input matInput [required]="true" type="number" [(ngModel)]="data.position">
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button mat-button [disabled]="!data.slot || !data.position"
+    [mat-dialog-close]="[data.slot, data.position]">Ok</button>
+  </div>
+</div>

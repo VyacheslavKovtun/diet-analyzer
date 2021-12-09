@@ -1,1 +1,52 @@
-<p>meal-planner works!</p>
+<div class="page-container">
+    <div *ngFor="let day of dates" class="column">
+        <div class="column-title">{{day}}</div>
+        <div class="breakfast">
+            <div class="cards-container" *ngFor="let item of getDayPlan(day, 1)">
+                <mat-card-header>
+                    <mat-card-title class="card-title">{{item.value.title}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image class="card-image" src={{item.value.image}} alt="Recipe photo">
+                
+                <mat-card-actions>
+                    <button mat-icon-button (click)="deleteRecipe(item)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </div>
+        </div>
+        <div class="lunch">
+            <div class="cards-container" *ngFor="let item of getDayPlan(day, 2)">
+                <mat-card-header>
+                    <mat-card-title class="card-title">{{item.value.title}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image class="card-image" src={{item.value.image}} alt="Recipe photo">
+                
+                <mat-card-actions>
+                    <button mat-icon-button (click)="deleteRecipe(item)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </div>
+        </div>
+        <div class="dinner">
+            <div class="cards-container" *ngFor="let item of getDayPlan(day, 3)">
+                <mat-card-header>
+                    <mat-card-title class="card-title">{{item.value.title}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image class="card-image" src={{item.value.image}} alt="Recipe photo">
+                
+                <mat-card-actions>
+                    <button mat-icon-button (click)="deleteRecipe(item)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </div>
+        </div>
+
+        <button class="addDayRecipeBtn" mat-icon-button (click)="addDayRecipe(day)">
+            <mat-icon>add_circle</mat-icon>
+            <label> Add</label>
+        </button>
+    </div>
+</div>

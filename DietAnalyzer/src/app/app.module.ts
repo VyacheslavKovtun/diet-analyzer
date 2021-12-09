@@ -81,6 +81,10 @@ import { ProductsExpensesService } from './common/api/services/products-expenses
 import { ProductsBaseInfoService } from './common/api/services/products-base-info.service';
 import { ProductsStatisticService } from './common/api/services/products-statistic.service';
 import { AddCurrentProductDialog } from './shared/dialogs/add-current-product-dialog/add-current-product-dialog';
+import { DatePipe } from '@angular/common';
+import { AddPlannedRecipeDialog } from './shared/dialogs/add-planned-recipe-dialog/add-planned-recipe-dialog';
+import { MealPlannerService } from './common/api/services/meal-planner.service';
+import { FillRecipeInfoDialog } from './shared/dialogs/fill-recipe-info-dialog/fill-recipe-info-dialog';
 
 @NgModule({
   declarations: [
@@ -98,6 +102,8 @@ import { AddCurrentProductDialog } from './shared/dialogs/add-current-product-di
     AddCurrentIngredientDialog,
     FillBaseInfoDialog,
     AddCurrentProductDialog,
+    AddPlannedRecipeDialog,
+    FillRecipeInfoDialog,
   ],
   imports: [
     BrowserModule,
@@ -165,7 +171,8 @@ import { AddCurrentProductDialog } from './shared/dialogs/add-current-product-di
   providers: [ AuthService, ApiUsersService, RecipesService, FavouriteRecipesService,
     CurrentIngredientsService, RecipesBaseInfoService, CurrentProductsService, IngredientsService,
     IngredientsBaseInfoService, BaseInfoService, CaloricInfoService, IngredientsStatisticService, 
-    IngredientsExpensesService, ProductsService, ProductsExpensesService, ProductsBaseInfoService, ProductsStatisticService],
+    IngredientsExpensesService, ProductsService, ProductsExpensesService, ProductsBaseInfoService,
+    ProductsStatisticService, DatePipe, MealPlannerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
