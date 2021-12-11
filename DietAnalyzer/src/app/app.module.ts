@@ -85,6 +85,9 @@ import { DatePipe } from '@angular/common';
 import { AddPlannedRecipeDialog } from './shared/dialogs/add-planned-recipe-dialog/add-planned-recipe-dialog';
 import { MealPlannerService } from './common/api/services/meal-planner.service';
 import { FillRecipeInfoDialog } from './shared/dialogs/fill-recipe-info-dialog/fill-recipe-info-dialog';
+import { ShoppingListService } from './common/api/services/shopping-list.service';
+import { AddShoppingListProductDialog } from './shared/dialogs/add-shopping-list-product-dialog/add-shopping-list-product-dialog';
+import { AddShoppingListItemDialog } from './shared/dialogs/add-shopping-list-item-dialog/add-shopping-list-item-dialog';
 
 @NgModule({
   declarations: [
@@ -104,6 +107,8 @@ import { FillRecipeInfoDialog } from './shared/dialogs/fill-recipe-info-dialog/f
     AddCurrentProductDialog,
     AddPlannedRecipeDialog,
     FillRecipeInfoDialog,
+    AddShoppingListProductDialog,
+    AddShoppingListItemDialog,
   ],
   imports: [
     BrowserModule,
@@ -172,7 +177,7 @@ import { FillRecipeInfoDialog } from './shared/dialogs/fill-recipe-info-dialog/f
     CurrentIngredientsService, RecipesBaseInfoService, CurrentProductsService, IngredientsService,
     IngredientsBaseInfoService, BaseInfoService, CaloricInfoService, IngredientsStatisticService, 
     IngredientsExpensesService, ProductsService, ProductsExpensesService, ProductsBaseInfoService,
-    ProductsStatisticService, DatePipe, MealPlannerService],
+    ProductsStatisticService, DatePipe, MealPlannerService, ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

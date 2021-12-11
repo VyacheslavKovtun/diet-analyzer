@@ -1,1 +1,41 @@
-<p>shopping-list works!</p>
+<div class="page-container">
+    <div class="food-container">
+        <div class="inline-blocks">
+            <button mat-icon-button (click)="addFood()">
+                <mat-icon>add_circle</mat-icon>
+            </button>
+            <h1>Food: </h1>
+        </div>
+
+        <div class="items-container">
+            <div *ngFor="let prod of food" class="aisle">
+                <div *ngFor="let item of prod.items" class="item">
+                    <mat-card-title>{{item.name}}</mat-card-title>
+                    
+                    <button mat-icon-button (click)="bought(item)">
+                        <mat-icon>done</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div><div class="nofood-container">
+        <div class="inline-blocks">
+            <button mat-icon-button (click)="addItem()">
+                <mat-icon>add_circle</mat-icon>
+            </button>
+            <h1>No food: </h1>
+        </div>
+
+        <div class="items-container">
+            <div *ngFor="let el of noFood" class="aisle">
+                <div *ngFor="let item of el.items" class="item">
+                    <mat-card-title>{{item.name}}</mat-card-title>
+                    
+                    <button mat-icon-button (click)="bought(item)">
+                        <mat-icon>done</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

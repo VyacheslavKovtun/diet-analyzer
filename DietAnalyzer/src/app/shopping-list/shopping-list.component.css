@@ -1,0 +1,41 @@
+.page-container {
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inline-blocks {
+    display: inline-flex;
+}
+
+.items-container {
+    color: #346645;
+}
+
+.food-container,
+.nofood-container {
+    color: #346645;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.food-container {
+    background-color: #dae7d8;
+    border-radius: 50px;
+}
+
+.items-container {
+    text-align: left;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.item {
+    color: #295036;
+    width: 100%;
+}
