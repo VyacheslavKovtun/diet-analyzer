@@ -98,16 +98,12 @@ namespace Server.Controllers
         [Route("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            if (ModelState.IsValid)
-            {
-                FillCurrentUserInfo();
-                url = "https://api.spoonacular.com/mealplanner/" + USER_NAME + "/items/" + id + "?hash=" + HASH + "&apiKey=" + API_KEY;
+            FillCurrentUserInfo();
+            url = "https://api.spoonacular.com/mealplanner/" + USER_NAME + "/items/" + id + "?hash=" + HASH + "&apiKey=" + API_KEY;
 
-                await client.DeleteAsync(url);
+            await client.DeleteAsync(url);
 
-                return Ok();
-            }
-            return BadRequest(ModelState);
+            return Ok();
         }
     }
 }

@@ -1,1 +1,81 @@
-<p>expenses works!</p>
+<div class="page-container">
+    <div class="ingredients-container">
+        <h1>Used ingredients: </h1>
+
+        <div class="cards-container">
+            <div *ngFor="let ingrExp of usedIngredientsExpenses">
+                <mat-card-header>
+                    <mat-card-title class="item">
+                        <div>{{ingrExp.purchasingDate}}</div>
+                        <div>{{ingrExp.name}}</div>
+                        <div>{{ingrExp.price}}</div>
+                    </mat-card-title>
+                </mat-card-header>
+            </div>
+        </div>
+
+        <div class="total">
+            <div>Total</div>
+            <div>{{usedIngrSum}}</div>
+        </div>
+    </div><div class="expired-ingr-container">
+        <h1>Expired ingredients: </h1>
+
+        <div class="cards-container">
+            <div *ngFor="let ingrExp of expiredIngredientsExpenses">
+                <mat-card-header>
+                    <mat-card-title class="item">
+                        <div>{{ingrExp.purchasingDate}}</div>
+                        <div>{{ingrExp.name}}</div>
+                        <div>{{ingrExp.price}}</div>
+                    </mat-card-title>
+                </mat-card-header>
+            </div>
+        </div>
+
+        <div class="total">
+            <div>Total</div>
+            <div>{{expiredIngrSum}}</div>
+        </div>
+    </div>
+    
+    <div class="products-container">
+        <h1>Used products: </h1>
+
+        <div class="cards-container">
+            <div *ngFor="let prodExp of usedProductsExpenses">
+                <mat-card-header>
+                    <mat-card-title class="item">
+                        <div>{{prodExp.purchasingDate}}</div>
+                        <div>{{prodExp.name}}</div>
+                        <div>{{prodExp.price}}</div>
+                    </mat-card-title>
+                </mat-card-header>
+            </div>
+        </div>
+
+        <div class="total">
+            <div>Total</div>
+            <div>{{usedProdSum}}</div>
+        </div>
+    </div><div class="expired-prod-container">
+        <h1>Expired products: </h1>
+
+        <div class="cards-container">
+            <div *ngFor="let prodExp of expiredProductsExpenses">
+                <mat-card-header>
+                    <mat-card-title class="item">
+                        <div>{{prodExp.purchasingDate}}</div>
+                        <div>{{prodExp.name}}</div>
+                        <div>{{prodExp.price}}</div>
+                    </mat-card-title>
+                </mat-card-header>
+            </div>
+        </div>
+
+        <div class="total">
+            <div>Total</div>
+            <div>{{expiredProdSum}}</div>
+        </div>
+    </div>
+</div>

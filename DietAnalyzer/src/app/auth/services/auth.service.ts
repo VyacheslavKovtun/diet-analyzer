@@ -19,10 +19,10 @@ export class AuthService{
 
   getCurrentUser() {
     return this.httpClient.get<ApiUser>(
-      [environment.API_URL, 'auth', 'current-user'].join('/'),
-      {
-        withCredentials: true
-      });
+    [environment.API_URL, 'auth', 'current-user'].join('/'),
+    {
+      withCredentials: true
+    });
   }
 
   register(userName: string, email: string, password: string) {
@@ -66,12 +66,7 @@ export class AuthService{
       {
         withCredentials: true
       }).subscribe(res => {
-      if(res) {
-        this.isUserAuth$.next(true);
-      }
-      else {
-        this.isUserAuth$.next(false);
-      }
+        this.isUserAuth$.next(res);
     });
   }
 }

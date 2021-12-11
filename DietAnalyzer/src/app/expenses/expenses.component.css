@@ -1,0 +1,50 @@
+.page-container {
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ingredients-container,
+.products-container {
+    background-color: #dae7d8;
+    border-radius: 50px;
+    color: #346645;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+    margin-bottom: 3%;
+}
+
+.expired-ingr-container,
+.expired-prod-container {
+    background-color: #e7d8d9;
+    border-radius: 50px;
+    color: #346645;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+    margin-bottom: 3%;
+}
+
+.item {
+    width: 90%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.total {
+    align-self: center;
+    font-weight: bold;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    width: 70%;
+    display: inline-flex;
+    justify-content: space-between;
+}
