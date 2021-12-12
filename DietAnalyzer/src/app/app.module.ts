@@ -88,6 +88,7 @@ import { FillRecipeInfoDialog } from './shared/dialogs/fill-recipe-info-dialog/f
 import { ShoppingListService } from './common/api/services/shopping-list.service';
 import { AddShoppingListProductDialog } from './shared/dialogs/add-shopping-list-product-dialog/add-shopping-list-product-dialog';
 import { AddShoppingListItemDialog } from './shared/dialogs/add-shopping-list-item-dialog/add-shopping-list-item-dialog';
+import { AuthGuard } from './auth/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -115,12 +116,12 @@ import { AddShoppingListItemDialog } from './shared/dialogs/add-shopping-list-it
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'fridge', component: FridgeComponent },
+      { path: 'fridge', component: FridgeComponent, canActivate: [AuthGuard] },
       { path: 'recipes', component: RecipesComponent },
       { path: 'info/:recipeId', component: RecipeInfoComponent },
-      { path: 'meal-planner', component: MealPlannerComponent },
-      { path: 'shopping-list', component: ShoppingListComponent },
-      { path: 'expenses', component: ExpensesComponent },
+      { path: 'meal-planner', component: MealPlannerComponent, canActivate: [AuthGuard] },
+      { path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthGuard] },
+      { path: 'expenses', component: ExpensesComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent},
       { path: '**', component: ErrorComponent },
     ]),
@@ -177,7 +178,7 @@ import { AddShoppingListItemDialog } from './shared/dialogs/add-shopping-list-it
     CurrentIngredientsService, RecipesBaseInfoService, CurrentProductsService, IngredientsService,
     IngredientsBaseInfoService, BaseInfoService, CaloricInfoService, IngredientsStatisticService, 
     IngredientsExpensesService, ProductsService, ProductsExpensesService, ProductsBaseInfoService,
-    ProductsStatisticService, DatePipe, MealPlannerService, ShoppingListService],
+    ProductsStatisticService, DatePipe, MealPlannerService, ShoppingListService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

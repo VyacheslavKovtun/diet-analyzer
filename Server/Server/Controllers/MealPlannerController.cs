@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 namespace Server.Controllers
 {
     [Route("api/meal-planner")]
+    [Authorize]
     [ApiController]
     public class MealPlannerController : ControllerBase
     {

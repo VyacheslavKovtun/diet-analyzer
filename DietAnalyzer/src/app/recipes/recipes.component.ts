@@ -34,9 +34,12 @@ export class RecipesComponent implements OnInit {
     private favRecipesService: FavouriteRecipesService, private recipesBaseInfoService: RecipesBaseInfoService, public dialog: MatDialog) {
     this.authService.isUserAuth$.subscribe(res => {
       this.authed = res;
-    });
-    this.authService.getCurrentUser().subscribe(res => {
-      this.currentUserId = res.id;
+
+      if(res) {
+        this.authService.getCurrentUser().subscribe(curUser => {
+          this.currentUserId = curUser.id;
+        });
+      }
     });
   }
 
@@ -84,12 +87,12 @@ export class RecipesComponent implements OnInit {
   }
 
   like(lRecipe: Recipe) {
-    if(this.currentUserId != null) {
-      if(lRecipe != null) {
+    if(this.currentUserId) {
+      if(lRecipe) {
         this.recipesBaseInfoService.getRecipeBaseInfoByApiId(lRecipe.id).subscribe(r => {
           var dbRecipe = r;
 
-          if(dbRecipe == null) {
+          if(!dbRecipe) {
             this.likedRecipe = {
               id: 0,
               apiId: lRecipe.id,
@@ -101,7 +104,7 @@ export class RecipesComponent implements OnInit {
       
             this.recipesBaseInfoService.createRecipeBaseInfo(this.likedRecipe).subscribe(res => {
               this.recipesBaseInfoService.getRecipeBaseInfoByApiId(lRecipe.id).subscribe(recipe => {
-                if(recipe.id != null) {
+                if(recipe.id) {
                   this.authService.getCurrentUser().subscribe(res => {
                     this.currentUserId = res.id;
       
