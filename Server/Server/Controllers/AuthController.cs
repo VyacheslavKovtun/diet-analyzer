@@ -2,14 +2,18 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Server.Infrastructure.Business.DTO;
 using Server.Models;
+using Server.Services;
+using Server.Services.Api.ConnectingUserResponse;
 using Server.Services.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Controllers
@@ -69,10 +73,20 @@ namespace Server.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 var user = await userManager.FindByEmailAsync(model.Email);
 
-                if (result.Succeeded)
+                if (user != null)
+                {
+                    if (!await userManager.IsEmailConfirmedAsync(user))
+                    {
+                        ModelState.AddModelError(string.Empty, "Not confirmed email");
+                        return BadRequest(model);
+                    }
+                }
+
+                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                
+                if(result.Succeeded)
                 {
                     return new JsonResult(new
                     {
@@ -92,19 +106,66 @@ namespace Server.Controllers
         [Route("register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            /*if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 IdentityUser user = new IdentityUser
                 {
-                    UserName = name,
-                    Email = email
+                    UserName = model.Email,
+                    Email = model.Email
                 };
 
                 var res = await userManager.CreateAsync(user, model.Password);
                 if (res.Succeeded)
                 {
-                    await signInManager.SignInAsync(user, false);
-                    return Ok(ModelState);
+                    var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.Action(
+                        "auth",
+                        "api",
+                        new { userId = user.Id, code = code },
+                        protocol: HttpContext.Request.Scheme);
+                    EmailSender emailSender = new EmailSender();
+                    await emailSender.SendEmailAsync(model.Email, "Confirm your account",
+                        $"Confirm your email by following link: <a href='{callbackUrl}'>link</a>");
+
+                    var values = new Dictionary<string, string>
+                    {
+                        {"username", model.UserName },
+                        {"firstName", "Api" },
+                        {"lastName", "User" },
+                        {"email", model.Email }
+                    };
+
+                    var content = JsonConvert.SerializeObject(values);
+                    var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+
+                    var response = client.PostAsync(url, httpContent).Result;
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK || response.StatusCode == System.Net.HttpStatusCode.Created)
+                    {
+                        var str = response.Content.ReadAsStringAsync().Result;
+                        ConnectingUserResponse connectedUser = JsonConvert.DeserializeObject<ConnectingUserResponse>(str);
+
+                        var newApiUser = await userManager.FindByEmailAsync(model.Email);
+
+                        await apiUsersService.CreateNewApiUserAsync(new Infrastructure.Business.DTO.ApiUserDTO
+                        {
+                            Id = Guid.Parse(newApiUser.Id),
+                            Username = connectedUser.username,
+                            ApiPassword = connectedUser.spoonacularPassword,
+                            Hash = connectedUser.hash
+                        });
+
+                        return new JsonResult(new
+                        {
+                            successful = true
+                        });
+                    }
+                    else
+                    {
+                        return new JsonResult(new
+                        {
+                            successful = false
+                        });
+                    }
                 }
                 else
                 {
@@ -114,36 +175,31 @@ namespace Server.Controllers
                     }
                     return BadRequest(ModelState);
                 }
-            }*/
-
-            /*var values = new Dictionary<string, string>
+            }
+            else
             {
-                {"username", "VyacheslavW" },
-                {"firstName", "Vyacheslav" },
-                {"lastName", "Kovtun" },
-                {"email", "kovtun.v.work@gmail.com" }
-            };
+                return BadRequest();
+            }
+        }
 
-            var content = JsonConvert.SerializeObject(values);
-            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
-
-            var response = client.PostAsync(url, httpContent).Result;
-            var str = response.Content.ReadAsStringAsync().Result;
-            return str;*/
-
-            //TODO: check for api response before adding to table
-
-            /*var user = await userManager.FindByEmailAsync("kovtun.v.work@gmail.com");
-
-            await apiUsersService.CreateNewApiUserAsync(new Infrastructure.Business.DTO.ApiUserDTO
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
             {
-                Id = Guid.Parse(user.Id),
-                Username = "api-103995-vyacheslavw",
-                ApiPassword = "grilledzucchini&19cocoapowder",
-                Hash = "557054f80c98f9bd9c82b67ae71d959ea3e8e066"
-            });*/
-
-            return Ok();
+                return BadRequest();
+            }
+            var user = await userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            var result = await userManager.ConfirmEmailAsync(user, code);
+            if (result.Succeeded)
+                return RedirectToAction("Index", "Home");
+            else
+                return BadRequest();
         }
 
         [Authorize]

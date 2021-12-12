@@ -369,3 +369,7 @@ D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcorea
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcoreapp3.1\MailKit.dll
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcoreapp3.1\MimeKit.dll
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+D:\Projects\ASP.NET Core + Angular\DietAnalyzer\Server\Server\obj\Debug\netcoreapp3.1\Razor\Views\Home\EmailConfirmed.cshtml.g.cs

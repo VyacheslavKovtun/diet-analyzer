@@ -11,9 +11,8 @@ namespace Server.Services
 {
     public class EmailSender: IEmailSender
     {
-        public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
+        public EmailSender()
         {
-            Options = optionsAccessor.Value;
             API_KEY = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
         }
 

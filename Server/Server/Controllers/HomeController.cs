@@ -23,6 +23,11 @@ namespace Server.Controllers
             return View();
         }
 
+        public IActionResult EmailConfirmed()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

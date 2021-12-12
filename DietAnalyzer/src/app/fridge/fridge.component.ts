@@ -15,8 +15,6 @@ import { ProductsStatisticService } from '../common/api/services/products-statis
 import { BaseInfo } from '../common/interfaces/base-info.interface';
 import { CurrentIngredient } from '../common/interfaces/current-ingredient.interface';
 import { CurrentProduct } from '../common/interfaces/current-product.interface';
-import { ForbiddenIngredient } from '../common/interfaces/forbidden-ingredient.interface';
-import { ForbiddenProduct } from '../common/interfaces/forbidden-product.interface';
 import { IngredientBaseInfo } from '../common/interfaces/ingredient-base-info.interface';
 import { IngredientsExpense } from '../common/interfaces/ingredients-expense.interface';
 import { ProductBaseInfo } from '../common/interfaces/product-base-info.interface';

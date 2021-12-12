@@ -7,6 +7,8 @@ import { ApiUser } from '../common/interfaces/api-user.interface';
 import { WelcomeDialogElement } from '../shared/dialogs/welcome-dialog/welcome-dialog';
 import { WrongLoginDialogElement } from '../shared/dialogs/wrong-login-dialog/wrong-login-dialog';
 import { ApiUsersService } from '../common/api/services/api.users.service';
+import { ConfirmEmailDialog } from '../shared/dialogs/confirm-email-dialog/confirm-email-dialog';
+import { WrongRegistrationDialog } from '../shared/dialogs/wrong-registration-dialog/wrong-registration-dialog';
 
 @Component({
   selector: 'app-login',
@@ -33,6 +35,14 @@ export class LoginComponent implements OnInit {
 
   openWrongLoginDialog() {
     this.dialog.open(WrongLoginDialogElement);
+  }
+
+  openConfirmEmailDialog() {
+    this.dialog.open(ConfirmEmailDialog);
+  }
+
+  openWrongRegistrationDialog() {
+    this.dialog.open(WrongRegistrationDialog);
   }
 
   ngOnInit(): void {
@@ -85,6 +95,19 @@ export class LoginComponent implements OnInit {
   }
 
   onBtnCheckInFormClick() {
-
+    if (this.registerForm.valid) {
+      const { userName, email, password } = this.registerForm.value;
+      
+      this.authService.register(userName, email, password).subscribe(
+        (res) => {
+          if(res.successful) {
+            this.openConfirmEmailDialog();
+          }
+        },
+        (error) => {
+          this.openWrongRegistrationDialog();
+        }
+      );
+    }
   }
 }

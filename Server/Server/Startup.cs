@@ -39,7 +39,8 @@ namespace Server
                     Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
             services.AddControllersWithViews().AddNewtonsoftJson();
 
             // requires
