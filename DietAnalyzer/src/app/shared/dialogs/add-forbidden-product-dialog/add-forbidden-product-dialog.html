@@ -1,0 +1,32 @@
+<div class="dialog">
+    <h1 mat-dialog-title>Add forbidden products</h1>
+    <div [formGroup]="findProductForm" class="input-container">
+        <div class="inline-block">
+            <mat-form-field class="product-name-field" appearance="outline">
+                <mat-label>Product title</mat-label>
+                <input matInput formControlName="productTitle" placeholder="">
+            </mat-form-field>
+        </div><div class="inline-block">
+            <button class="search-btn" mat-mini-fab color="" (click)="searchClick()">
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="cards-container">
+        <div *ngFor="let prod of products" class="product-card">
+            <mat-card-header>
+                <mat-card-title>{{prod.title}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="https://spoonacular.com/productImages/{{this.prod.id}}-90x90.{{prod.imageType}}" alt="Product photo">
+            
+            <mat-card-actions>
+                <button mat-button (click)="addProduct(prod)">Add</button>
+            </mat-card-actions>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    </div>
+</div>

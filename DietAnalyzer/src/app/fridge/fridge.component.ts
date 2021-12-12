@@ -5,6 +5,8 @@ import { BaseInfoService } from '../common/api/services/base-info.service';
 import { CaloricInfoService } from '../common/api/services/caloric-info.service';
 import { CurrentIngredientsService } from '../common/api/services/current-ingredients.service';
 import { CurrentProductsService } from '../common/api/services/current-products.service';
+import { ForbiddenIngredientsService } from '../common/api/services/forbidden-ingredients.service';
+import { ForbiddenProductsService } from '../common/api/services/forbidden-products.service';
 import { IngredientsBaseInfoService } from '../common/api/services/ingredients-base-info.service';
 import { IngredientsExpensesService } from '../common/api/services/ingredients-expenses.service';
 import { ProductsBaseInfoService } from '../common/api/services/products-base-info.service';
@@ -13,12 +15,16 @@ import { ProductsStatisticService } from '../common/api/services/products-statis
 import { BaseInfo } from '../common/interfaces/base-info.interface';
 import { CurrentIngredient } from '../common/interfaces/current-ingredient.interface';
 import { CurrentProduct } from '../common/interfaces/current-product.interface';
+import { ForbiddenIngredient } from '../common/interfaces/forbidden-ingredient.interface';
+import { ForbiddenProduct } from '../common/interfaces/forbidden-product.interface';
 import { IngredientBaseInfo } from '../common/interfaces/ingredient-base-info.interface';
 import { IngredientsExpense } from '../common/interfaces/ingredients-expense.interface';
 import { ProductBaseInfo } from '../common/interfaces/product-base-info.interface';
 import { ProductsExpense } from '../common/interfaces/products-expense.interface';
 import { AddCurrentIngredientDialog } from '../shared/dialogs/add-current-ingr-dialog/add-current-ingr-dialog';
 import { AddCurrentProductDialog } from '../shared/dialogs/add-current-product-dialog/add-current-product-dialog';
+import { AddForbiddenIngredientDialog } from '../shared/dialogs/add-forbidden-ingredient-dialog/add-forbidden-ingredient-dialog';
+import { AddForbiddenProductDialog } from '../shared/dialogs/add-forbidden-product-dialog/add-forbidden-product-dialog';
 import { FillBaseInfoDialog } from '../shared/dialogs/fill-base-info-dialog/fill-base-info-dialog';
 
 @Component({
@@ -35,6 +41,9 @@ export class FridgeComponent implements OnInit {
   isExpired !: boolean;
   prodExpense !: ProductsExpense;
 
+  forbiddenIngredients : IngredientBaseInfo[] = [];
+  forbiddenProducts : ProductBaseInfo[] = [];
+
   currentIngredients : IngredientBaseInfo[] = [];
   currentProducts : ProductBaseInfo[] = [];
 
@@ -44,9 +53,12 @@ export class FridgeComponent implements OnInit {
     private authService: AuthService, public dialog: MatDialog, private ingredientsBaseInfoService: IngredientsBaseInfoService,
     private ingredientsExpensesService: IngredientsExpensesService, private baseInfoService: BaseInfoService,
     private productsBaseInfoService: ProductsBaseInfoService, private productsExpensesService: ProductsExpensesService,
-    private productsStatisticService: ProductsStatisticService, private caloricInfoService: CaloricInfoService) {
+    private productsStatisticService: ProductsStatisticService, private caloricInfoService: CaloricInfoService,
+    private forbiddenIngredientsService: ForbiddenIngredientsService, private forbiddenProductsService: ForbiddenProductsService) {
     this.loadIngredients();
+    this.loadForbiddenIngredients();
     this.loadProducts();
+    this.loadForbiddenProducts();
   }
 
   ngOnInit(): void {
@@ -288,5 +300,81 @@ export class FridgeComponent implements OnInit {
         });
       });      
     }
+  }
+
+  loadForbiddenIngredients() {
+    this.forbiddenIngredients = [];
+
+    this.authService.getCurrentUser().subscribe(curUser => {
+      if(curUser) {
+        this.forbiddenIngredientsService.getForbiddenIngredientsByUserId(curUser.id).subscribe(forbIngrs => {
+          forbIngrs.forEach(fI => {
+            this.ingredientsBaseInfoService.getIngredientBaseInfoById(fI.ingredientId).subscribe(iBInfo => {
+              this.forbiddenIngredients.push(iBInfo);
+            });
+          });
+        });
+      }
+    });
+  }
+
+  addForbiddenIngredients() {
+    const dialogRef = this.dialog.open(AddForbiddenIngredientDialog);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadForbiddenIngredients();
+    });
+  }
+
+  deleteForbiddenIngredient(ingr: IngredientBaseInfo) {
+    this.authService.getCurrentUser().subscribe(curUser => {
+      if(curUser) {
+        this.forbiddenIngredientsService.getForbiddenIngredientByIngredientBaseInfoId(ingr.id, curUser.id).subscribe(forbIngr => {
+          this.forbiddenIngredientsService.deleteForbiddenIngredient(forbIngr.id).subscribe(() => {
+            this.ingredientsBaseInfoService.deleteIngredientBaseInfo(ingr.id).subscribe(() => {
+              this.loadForbiddenIngredients();
+            });
+          });
+        })
+      }
+    });
+  }
+
+  loadForbiddenProducts() {
+    this.forbiddenProducts = [];
+
+    this.authService.getCurrentUser().subscribe(curUser => {
+      if(curUser) {
+        this.forbiddenProductsService.getForbiddenProductsByUserId(curUser.id).subscribe(forbProds => {
+          forbProds.forEach(fP => {
+            this.productsBaseInfoService.getProductBaseInfoById(fP.productId).subscribe(pBInfo => {
+              this.forbiddenProducts.push(pBInfo);
+            });
+          });
+        });
+      }
+    });
+  }
+
+  addForbiddenProducts() {
+    const dialogRef = this.dialog.open(AddForbiddenProductDialog);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadForbiddenProducts();
+    });
+  }
+
+  deleteForbiddenProduct(prod: ProductBaseInfo) {
+    this.authService.getCurrentUser().subscribe(curUser => {
+      if(curUser) {
+        this.forbiddenProductsService.getForbiddenProductByProductBaseInfoId(prod.id, curUser.id).subscribe(forbProd => {
+          this.forbiddenProductsService.deleteForbiddenProduct(forbProd.id).subscribe(() => {
+            this.productsBaseInfoService.deleteProductBaseInfo(prod.id).subscribe(() => {
+              this.loadForbiddenProducts();
+            });
+          });
+        })
+      }
+    });
   }
 }

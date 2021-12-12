@@ -89,6 +89,10 @@ import { ShoppingListService } from './common/api/services/shopping-list.service
 import { AddShoppingListProductDialog } from './shared/dialogs/add-shopping-list-product-dialog/add-shopping-list-product-dialog';
 import { AddShoppingListItemDialog } from './shared/dialogs/add-shopping-list-item-dialog/add-shopping-list-item-dialog';
 import { AuthGuard } from './auth/guards/auth.guard';
+import { ForbiddenIngredientsService } from './common/api/services/forbidden-ingredients.service';
+import { ForbiddenProductsService } from './common/api/services/forbidden-products.service';
+import { AddForbiddenIngredientDialog } from './shared/dialogs/add-forbidden-ingredient-dialog/add-forbidden-ingredient-dialog';
+import { AddForbiddenProductDialog } from './shared/dialogs/add-forbidden-product-dialog/add-forbidden-product-dialog';
 
 @NgModule({
   declarations: [
@@ -110,6 +114,8 @@ import { AuthGuard } from './auth/guards/auth.guard';
     FillRecipeInfoDialog,
     AddShoppingListProductDialog,
     AddShoppingListItemDialog,
+    AddForbiddenIngredientDialog,
+    AddForbiddenProductDialog,
   ],
   imports: [
     BrowserModule,
@@ -178,7 +184,8 @@ import { AuthGuard } from './auth/guards/auth.guard';
     CurrentIngredientsService, RecipesBaseInfoService, CurrentProductsService, IngredientsService,
     IngredientsBaseInfoService, BaseInfoService, CaloricInfoService, IngredientsStatisticService, 
     IngredientsExpensesService, ProductsService, ProductsExpensesService, ProductsBaseInfoService,
-    ProductsStatisticService, DatePipe, MealPlannerService, ShoppingListService, AuthGuard],
+    ProductsStatisticService, DatePipe, MealPlannerService, ShoppingListService, AuthGuard,
+    ForbiddenIngredientsService, ForbiddenProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,6 +18,17 @@
     width: 50%;
 }
 
+.forbidden-ingredients-container,
+.forbidden-products-container {
+    background-color: #e7d8d9;
+    color: #346645;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    border-radius: 50px;
+}
+
 .ingredients-container {
     background-color: #dae7d8;
     border-radius: 50px;

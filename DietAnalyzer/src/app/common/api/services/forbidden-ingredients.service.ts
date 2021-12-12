@@ -24,6 +24,11 @@ export class ForbiddenIngredientsService
         return this.http.get<ForbiddenIngredient[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
+    getForbiddenIngredientByIngredientBaseInfoId(ingrBInfoId: number, userId: string) {
+        return this.http.get<ForbiddenIngredient>(this.url + '/ingredient-base-info/' + ingrBInfoId + '/user/' + userId,
+        { withCredentials: true });
+    }
+
     createForbiddenIngredient(ingredient: ForbiddenIngredient) {
         var body = JSON.stringify(ingredient);
         var headerOptions = new HttpHeaders({'Content-Type':'application/json'});

@@ -24,6 +24,11 @@ export class ForbiddenProductsService
         return this.http.get<ForbiddenProduct[]>(this.url + '/user/' + id, { withCredentials: true });
     }
 
+    getForbiddenProductByProductBaseInfoId(prodBInfoId: number, userId: string) {
+        return this.http.get<ForbiddenProduct>(this.url + '/product-base-info/' + prodBInfoId + '/user/' + userId,
+        { withCredentials: true });
+    }
+
     createForbiddenProduct(product: ForbiddenProduct) {
         var body = JSON.stringify(product);
         var headerOptions = new HttpHeaders({'Content-Type':'application/json'});

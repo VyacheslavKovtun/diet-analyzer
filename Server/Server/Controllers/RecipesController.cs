@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Server.Infrastructure.Business.DTO;
 using Server.Services.Api.Recipes;
+using Server.Services.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +22,51 @@ namespace Server.Controllers
 
         private string API_KEY;
 
-        public RecipesController()
+        ApiUserDTO apiUser { get; set; }
+
+        ForbiddenIngredientsService forbiddenIngredientsService;
+        ApiUsersService apiUsersService;
+        IngredientsBaseInfoService ingredientsBaseInfoService;
+        UserManager<IdentityUser> userManager;
+
+        public RecipesController(ForbiddenIngredientsService forbiddenIngredientsService, ApiUsersService apiUsersService,
+            UserManager<IdentityUser> userManager, IngredientsBaseInfoService ingredientsBaseInfoService)
         {
             API_KEY = Environment.GetEnvironmentVariable("SPOONACULAR_API_KEY");
+
+            this.forbiddenIngredientsService = forbiddenIngredientsService;
+            this.apiUsersService = apiUsersService;
+            this.ingredientsBaseInfoService = ingredientsBaseInfoService;
+            this.userManager = userManager;
+        }
+
+        public void FillCurrentUserInfo()
+        {
+            if (this.User != null)
+            {
+                var identityUser = this.userManager.GetUserAsync(this.User).Result;
+                if (identityUser != null)
+                {
+                    var gId = Guid.Parse(identityUser.Id);
+
+                    this.apiUser = this.apiUsersService.GetApiUserByIdAsync(gId).Result;
+                }
+            }
+        }
+
+        private async Task<string> GenerateForbiddenIngredientsString()
+        {
+            FillCurrentUserInfo();
+            var forbiddenIngredientsList = await this.forbiddenIngredientsService.GetForbiddenIngredientsByUserIdAsync(this.apiUser.Id);
+            string resStr = "";
+
+            foreach(var item in forbiddenIngredientsList)
+            {
+                var bInfo = await this.ingredientsBaseInfoService.GetIngredientBaseInfoByIdAsync(item.IngredientId);
+                resStr += bInfo.Name + ",";
+            }
+
+            return resStr;
         }
 
         [HttpGet]
@@ -40,7 +85,10 @@ namespace Server.Controllers
         [Route("search/title/{title}")]
         public IEnumerable<Result> GetByTitle(string title)
         {
-            url = "https://api.spoonacular.com/recipes/complexSearch" + "?apiKey=" + API_KEY + "&titleMatch=" + title;
+            var forbiddenIngredientsParams = GenerateForbiddenIngredientsString().Result;
+            url = "https://api.spoonacular.com/recipes/complexSearch" + "?apiKey=" + API_KEY + "&titleMatch=" + title
+                + "&excludeIngredients=" + forbiddenIngredientsParams;
+
             var json = JsonConvert.DeserializeObject(client.GetStringAsync(url).Result).ToString();
 
             Root root = JsonConvert.DeserializeObject<Root>(json);

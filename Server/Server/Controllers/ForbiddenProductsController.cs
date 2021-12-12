@@ -46,7 +46,17 @@ namespace Server.Controllers
         {
             var gId = Guid.Parse(id);
 
-            var product = await forbiddenProductsService.GetForbiddenProductsByUserIdAsync(gId);
+            var products = await forbiddenProductsService.GetForbiddenProductsByUserIdAsync(gId);
+            return products;
+        }
+
+        [Authorize]
+        [HttpGet("product-base-info/{prodId}/user/{userId}")]
+        public async Task<ForbiddenProductDTO> GetByProdBaseInfoId(int prodId, string userId)
+        {
+            var gId = Guid.Parse(userId);
+
+            var product = await forbiddenProductsService.GetForbiddenProductByProdBaseInfoIdAsync(prodId, gId);
             return product;
         }
 

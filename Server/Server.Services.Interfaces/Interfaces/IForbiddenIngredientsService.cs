@@ -11,6 +11,8 @@ namespace Server.Services.Interfaces.Interfaces
         Task CreateNewForbiddenIngredientAsync(ForbiddenIngredientDTO forbiddenIngredient);
         Task<List<ForbiddenIngredientDTO>> GetAllForbiddenIngredientsAsync();
         Task<ForbiddenIngredientDTO> GetForbiddenIngredientByIdAsync(int id);
+        Task<List<ForbiddenIngredientDTO>> GetForbiddenIngredientsByUserIdAsync(Guid id);
+        Task<ForbiddenIngredientDTO> GetForbiddenIngredientByIngrBaseInfoIdAsync(int ingrId, Guid userId);
         Task UpdateForbiddenIngredientAsync(ForbiddenIngredientDTO forbiddenIngredient);
         Task DeleteForbiddenIngredientAsync(int id);
     }

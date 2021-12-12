@@ -56,4 +56,50 @@
             </div>
         </div>
     </div>
+
+    <div class="forbidden-ingredients-container">
+        <div class="inline-blocks">
+            <button mat-icon-button (click)="addForbiddenIngredients()">
+                <mat-icon>add_circle</mat-icon>
+            </button>
+            <h1>Forbidden ingredients: </h1>
+        </div>
+
+        <div class="cards-container">
+            <div *ngFor="let ingr of forbiddenIngredients" class="ingredient-card">
+                <mat-card-header>
+                    <mat-card-title>{{ingr.name}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src="https://spoonacular.com/cdn/ingredients_100x100/{{ingr.imageUrl}}" alt="Ingredient photo">
+                
+                <mat-card-actions>
+                    <button mat-icon-button (click)="deleteForbiddenIngredient(ingr)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </div>
+        </div>
+    </div><div class="forbidden-products-container">
+        <div class="inline-blocks">
+            <button mat-icon-button (click)="addForbiddenProducts()">
+                <mat-icon>add_circle</mat-icon>
+            </button>
+            <h1>Forbidden products: </h1>
+        </div>
+
+        <div class="cards-container">
+            <div *ngFor="let prod of forbiddenProducts" class="product-card">
+                <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">{{prod.title}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src={{prod.imageUrl}} alt="Product photo">
+                
+                <mat-card-actions>
+                    <button mat-icon-button (click)="deleteForbiddenProduct(prod)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </div>
+        </div>
+    </div>
 </div>

@@ -11,6 +11,8 @@ namespace Server.Services.Interfaces.Interfaces
         Task CreateNewForbiddenProductAsync(ForbiddenProductDTO forbiddenProduct);
         Task<List<ForbiddenProductDTO>> GetAllForbiddenProductsAsync();
         Task<ForbiddenProductDTO> GetForbiddenProductByIdAsync(int id);
+        Task<List<ForbiddenProductDTO>> GetForbiddenProductsByUserIdAsync(Guid id);
+        Task<ForbiddenProductDTO> GetForbiddenProductByProdBaseInfoIdAsync(int prodId, Guid userId);
         Task UpdateForbiddenProductAsync(ForbiddenProductDTO forbiddenProduct);
         Task DeleteForbiddenProductAsync(int id);
     }
