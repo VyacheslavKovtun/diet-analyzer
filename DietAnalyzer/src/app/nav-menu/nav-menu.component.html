@@ -7,48 +7,49 @@
                 </button>
                 <span class="example-spacer"></span>
 
-                <button [routerLinkActive]="['link-active']" 
-                [routerLinkActiveOptions]="{ exact: true }" 
-                [routerLink]="['/']"
-                 mat-flat-button class="toolbar-menu-button">
-                    <span class="toolbar-menu-button-title">Home</span>
-                </button>
+                <div class="toolbar-elements">
+                    <button [routerLinkActive]="['link-active']" 
+                    [routerLinkActiveOptions]="{ exact: true }" 
+                    [routerLink]="['/']"
+                    mat-flat-button class="toolbar-menu-button">
+                        <span class="toolbar-menu-button-title">Home</span>
+                    </button>
 
-                <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/fridge']"
-                 mat-flat-button class="toolbar-menu-button">
-                    <span class="toolbar-menu-button-title">Fridge</span>
-                </button>
+                    <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/fridge']"
+                    mat-flat-button class="toolbar-menu-button">
+                        <span class="toolbar-menu-button-title">Fridge</span>
+                    </button>
 
-                <button [routerLinkActive]="['link-active']" [routerLink]="['/recipes']"
-                 mat-flat-button class="toolbar-menu-button">
-                    <span class="toolbar-menu-button-title">Recipes</span>
-                </button>
+                    <button [routerLinkActive]="['link-active']" [routerLink]="['/recipes']"
+                    mat-flat-button class="toolbar-menu-button">
+                        <span class="toolbar-menu-button-title">Recipes</span>
+                    </button>
 
-                <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/meal-planner']"
-                 mat-flat-button class="toolbar-menu-button">
-                    <span class="toolbar-menu-button-title">Meal Planner</span>
-                </button>
+                    <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/meal-planner']"
+                    mat-flat-button class="toolbar-menu-button">
+                        <span class="toolbar-menu-button-title">Meal Planner</span>
+                    </button>
 
-                <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/shopping-list']"
-                 mat-flat-button class="toolbar-menu-button">
-                    <span class="toolbar-menu-button-title">Shopping List</span>
-                </button>
+                    <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/shopping-list']"
+                    mat-flat-button class="toolbar-menu-button">
+                        <span class="toolbar-menu-button-title">Shopping List</span>
+                    </button>
 
-                <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/expenses']"
-                 mat-flat-button class="toolbar-menu-button">
-                    <span class="toolbar-menu-button-title">Expenses</span>
-                </button>
+                    <button *ngIf="authed" [routerLinkActive]="['link-active']" [routerLink]="['/expenses']"
+                    mat-flat-button class="toolbar-menu-button">
+                        <span class="toolbar-menu-button-title">Expenses</span>
+                    </button>
 
-                <button *ngIf="!authed" [routerLinkActive]="['link-active']" [routerLink]="['/login']"
-                 mat-flat-button class="toolbar-menu-button" id="log-button">
-                    <span class="toolbar-menu-button-title" id="log-button-title">Login</span>
-                </button>
+                    <button *ngIf="!authed" [routerLinkActive]="['link-active']" [routerLink]="['/login']"
+                    mat-flat-button class="toolbar-menu-button" id="log-button">
+                        <span class="toolbar-menu-button-title" id="log-button-title">Login</span>
+                    </button>
 
-                <button *ngIf="authed" [routerLinkActive]="['link-active']" (click)="logoutClick()" href="#"
-                 mat-flat-button class="toolbar-menu-button" id="log-button">
-                    <span class="toolbar-menu-button-title" id="log-button-title">Logout</span>
-                </button>
-                
+                    <button *ngIf="authed" [routerLinkActive]="['link-active']" (click)="logoutClick()" href="#"
+                    mat-flat-button class="toolbar-menu-button" id="log-button">
+                        <span class="toolbar-menu-button-title" id="log-button-title">Logout</span>
+                    </button>
+                </div>
             </mat-toolbar>
         </div>
     </nav>

@@ -80,8 +80,29 @@ export class FridgeComponent implements OnInit {
           this.curI = ingr;
 
           this.curI.forEach(ingredient => {
-            this.ingredientsBaseInfoService.getIngredientBaseInfoById(ingredient.ingredientId).subscribe(ingrBaseInfo => {
-              this.currentIngredients.push(ingrBaseInfo);
+            this.baseInfoService.getBaseInfoById(ingredient.baseInfoId).subscribe(baseInfo => {
+              var expired = false;
+              if(Date.parse(baseInfo.expirationDate.toString()) > Date.now()) {
+                expired = false;
+              }
+              else {
+                expired = true;
+              }
+
+              this.ingredientsBaseInfoService.getIngredientBaseInfoById(ingredient.ingredientId).subscribe(ingrBaseInfo => {
+                this.ingredientsExpensesService.getIngredientsExpenseByIngredientBaseInfoId(ingredient.ingredientId, this.currentUserId).subscribe(ingrExpense => {
+                  if(expired) {
+                    ingrExpense.isExpired = true;
+                    this.ingredientsExpensesService.updateIngredientsExpense(ingrExpense).subscribe();
+
+                    ingrBaseInfo.name += " (expired)";
+                    this.currentIngredients.push(ingrBaseInfo);
+                  }
+                  else {
+                    this.currentIngredients.push(ingrBaseInfo);
+                  }
+                });
+              });
             });
           })
         });
@@ -195,8 +216,29 @@ export class FridgeComponent implements OnInit {
           this.curP = prod;
 
           this.curP.forEach(product => {
-            this.productsBaseInfoService.getProductBaseInfoById(product.productId).subscribe(prodBaseInfo => {
-              this.currentProducts.push(prodBaseInfo);
+            this.baseInfoService.getBaseInfoById(product.baseInfoId).subscribe(baseInfo => {
+              var expired = false;
+              if(Date.parse(baseInfo.expirationDate.toString()) > Date.now()) {
+                expired = false;
+              }
+              else {
+                expired = true;
+              }
+
+              this.productsBaseInfoService.getProductBaseInfoById(product.productId).subscribe(prodBaseInfo => {
+                this.productsExpensesService.getProductsExpenseByProductBaseInfoId(product.productId, this.currentUserId).subscribe(prodExpense => {
+                  if(expired) {
+                    prodExpense.isExpired = true;
+                    this.productsExpensesService.updateProductsExpense(prodExpense).subscribe();
+
+                    prodBaseInfo.title += " (expired)";
+                    this.currentProducts.push(prodBaseInfo);
+                  }
+                  else {
+                    this.currentProducts.push(prodBaseInfo);
+                  }
+                });
+              });
             });
           })
         });

@@ -7,6 +7,17 @@
   background-color: #C7DEC1;
 }
 
+.toolbar {
+  display: inline-flex;
+  justify-content: flex-end;
+}
+
+.toolbar-elements {
+  width: 100%;
+  display: inline-flex;
+  justify-content: flex-end;
+}
+
 #title-light {
   color: #ffff;
 }
@@ -30,6 +41,10 @@
   background-color: transparent;
 }
 
+.toolbar-menu-button {
+  width: 10%;
+}
+
 .example-spacer {
   flex: 1 1 auto;
 }
@@ -39,4 +54,137 @@
   width: 10%;
   height: 65%;
   border-radius: 20px;
+}
+
+@media (max-width: 480px) {
+  header {
+    background-color: #C7DEC1;
+    height: 20vh;
+  }
+
+  .toolbar {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .toolbar-elements {
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    flex-direction: row;
+  }
+
+  .toolbar-menu-button {
+    flex-grow: 1;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1%;
+  }
+
+  .toolbar-menu-button-title {
+    font-size: 60%;
+  }
+
+  #log-button {
+    width: 10%;
+    height: 50%;
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  header {
+    background-color: #C7DEC1;
+    height: 14vh;
+  }
+
+  .toolbar {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .toolbar-elements {
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    flex-direction: row;
+  }
+
+  .toolbar-menu-button {
+    flex-grow: 1;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1%;
+  }
+
+  .toolbar-menu-button-title {
+    font-size: 65%;
+  }
+
+  #log-button {
+    width: 10%;
+    height: 80%;
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .toolbar {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .toolbar-elements {
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    flex-direction: row;
+  }
+
+  .toolbar-menu-button {
+    flex-grow: 1;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1%;
+  }
+
+  .title {
+    font-size: 5vh;
+  }
+
+  .toolbar-menu-button-title {
+    font-size: 90%;
+  }
+
+  #log-button {
+    width: 20%;
+    height: 100%;
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+
+}
+
+@media (min-width: 1441px) {
+  .title {
+    font-size: 2vh;
+  }
+
+  .toolbar-menu-button-title {
+    font-size: 1.3vh;
+  }
+
+  #log-button {
+    width: 20%;
+    height: 100%;
+    border-radius: 20px;
+  }
 }

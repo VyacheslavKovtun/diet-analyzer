@@ -48,3 +48,72 @@
     display: inline-flex;
     justify-content: space-between;
 }
+
+@media (max-width: 480px) {
+    .page-container {
+        max-width: 100%;
+        flex-direction: column;
+    }
+
+    .ingredients-container,
+    .products-container {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .expired-ingr-container,
+    .expired-prod-container {
+        width: 100%;
+        border-radius: 50px;
+    }
+}
+  
+@media (min-width: 480px) and (max-width: 767px) {
+    .page-container {
+        max-width: 100%;
+        flex-direction: column;
+    }
+
+    .ingredients-container,
+    .products-container {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .expired-ingr-container,
+    .expired-prod-container {
+        width: 100%;
+        border-radius: 50px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+
+}
+
+@media (min-width: 1441px) {
+    h1 {
+        margin-top: 2%;
+        font-size: 50px;
+    }
+
+    .ingredients-container,
+    .products-container {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+    }
+
+    .mat-card-title {
+        font-size: 30px;
+    }
+}

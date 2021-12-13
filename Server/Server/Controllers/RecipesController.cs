@@ -57,13 +57,16 @@ namespace Server.Controllers
         private async Task<string> GenerateForbiddenIngredientsString()
         {
             FillCurrentUserInfo();
-            var forbiddenIngredientsList = await this.forbiddenIngredientsService.GetForbiddenIngredientsByUserIdAsync(this.apiUser.Id);
             string resStr = "";
-
-            foreach(var item in forbiddenIngredientsList)
+            if (this.apiUser != null)
             {
-                var bInfo = await this.ingredientsBaseInfoService.GetIngredientBaseInfoByIdAsync(item.IngredientId);
-                resStr += bInfo.Name + ",";
+                var forbiddenIngredientsList = await this.forbiddenIngredientsService.GetForbiddenIngredientsByUserIdAsync(this.apiUser.Id);
+
+                foreach (var item in forbiddenIngredientsList)
+                {
+                    var bInfo = await this.ingredientsBaseInfoService.GetIngredientBaseInfoByIdAsync(item.IngredientId);
+                    resStr += bInfo.Name + ",";
+                }
             }
 
             return resStr;
